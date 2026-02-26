@@ -14,12 +14,15 @@ public class Domain {
 	 */
 	public Domain(int min, int max) {
 		// TODO - implement Domain.Domain
-		throw new UnsupportedOperationException();
+		this.min = min;
+		this.max = max;
+		this.presence = new boolean[max - min + 1];
 	}
 
 	/**
 	 * 
 	 * @param value
+	 * This method remove a integer to the domain
 	 */
 	public void removeValue(int value) {
 		// TODO - implement Domain.removeValue
@@ -29,10 +32,15 @@ public class Domain {
 	/**
 	 * 
 	 * @param value
+	 * This method watch if a integer is in the domain
 	 */
 	public boolean contains(int value) {
 		// TODO - implement Domain.contains
-		throw new UnsupportedOperationException();
+		if (this.presence[this.max - value] == true) {
+			return true;
+		} else {
+			return false;
+		}
 	}
 
 	public int size() {
