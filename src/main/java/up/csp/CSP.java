@@ -1,10 +1,17 @@
 package up.csp;
 
 import java.util.ArrayList;
+import java.util.Collection;
 
 public class CSP {
 
-	private ArrayList<Variable> variables; 
+	private Collection<Variable> variables; 
+	private Collection<Constraint> constraints;
+
+	public CSP() {
+		variables = new ArrayList<Variable>();
+		constraints = new ArrayList<Constraint>();
+	}
 
 	public void solve() {
 		// TODO - implement CSP.solve
