@@ -24,12 +24,17 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "main",
+    "git-widget-placeholder": "Constraint",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "/home/SFASP2MI/olemai01/IdeaProjects/satisfy",
+    "last_opened_file_path": "/home/SFASP2MI/olemai01/IdeaProjects/satisfy/src/main/java/up/csp",
     "onboarding.tips.debug.path": "/home/SFASP2MI/olemai01/IdeaProjects/satisfy/src/main/java/org/example/Main.java"
   }
 }]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/main/java/up/csp" />
+    </key>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
