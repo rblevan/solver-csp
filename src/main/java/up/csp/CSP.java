@@ -1,10 +1,10 @@
 package up.csp;
 
-import java.util.*;
+import java.util.ArrayList;
 
 public class CSP {
 
-	private Collection<Variable> variables;
+	private ArrayList<Variable> variables; 
 
 	public void solve() {
 		// TODO - implement CSP.solve
