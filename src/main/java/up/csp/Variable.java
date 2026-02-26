@@ -1,30 +1,48 @@
 package up.csp;
-
-import java.util.*;
+;
 
 public class Variable {
 
-	protected Collection<Constraint> scope;
-	private String name;
-	private int currentValue;
+    private String name; // Unique name for the Variable
+    private Domain domain; // The domain must be enumerable,so it must be a sequence 
+    private Integer value; // must be null if unassigned. this is the assigned value you are trying to find    
 
-	/**
-	 * 
-	 * @param val
-	 */
-	public void assign(int val) {
-		// TODO - implement Variable.assign
-		throw new UnsupportedOperationException();
-	}
+    /*@author Nicolas ITEY
+    @param 
+    @param
+    @param 
+    */
+    public Variable(String name, Domain domain, Integer value) {
+        this.name = name;
+        this.domain = domain;
+        this.value = value;
 
-	public void unassign() {
-		// TODO - implement Variable.unassign
-		throw new UnsupportedOperationException();
-	}
+    }
+     public boolean isAssigned() {
+        return value != null;
+    }
 
-	public boolean isAssigned() {
-		// TODO - implement Variable.isAssigned
-		throw new UnsupportedOperationException();
-	}
+    public void assign(int v) {
+        this.value = v;
+    }
 
+    public void unassign() {
+        this.value = null;
+    }
+
+    public String getName() {
+
+        return this.name;
+    }
+
+    public Domain getDomain() {
+
+        return this.domain;
+    }
+
+    public Integer getValue() {
+
+        return this.value;
+
+    }
 }
