@@ -7,7 +7,7 @@ public class Variable {
     private Domain domain; // The domain must be enumerable,so it must be a sequence 
     private Integer value; // must be null if unassigned. this is the assigned value you are trying to find    
 
-    /*@author Nicolas ITEY
+    /**@author Nicolas ITEY
     @param 
     @param
     @param 
