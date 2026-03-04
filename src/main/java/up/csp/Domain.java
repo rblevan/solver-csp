@@ -1,51 +1,56 @@
 package up.csp;
 
+import java.util.Arrays;
+
 public class Domain {
 
 	private Variable domain;
 	private int min;
 	private int max;
 	private boolean[] presence;
-
 	/**
 	 * 
-	 * @param min
-	 * @param max
+	 * @param min minimum value
+	 * @param max maximum value
 	 */
 	public Domain(int min, int max) {
-		// TODO - implement Domain.Domain
 		this.min = min;
 		this.max = max;
-		this.presence = new boolean[max - min + 1];
-	}
+		this.presence = new boolean[this.max - this.min + 1];
+        Arrays.fill(this.presence, true);
+    }
 
 	/**
 	 * 
 	 * @param value
-	 * This method remove a integer to the domain
+	 * This method remove an integer to the domain
 	 */
 	public void removeValue(int value) {
-		// TODO - implement Domain.removeValue
-		throw new UnsupportedOperationException();
+		if (value >= this.min && value <= this.max) {
+            this.presence[value - this.min] = false;
+        }
 	}
 
 	/**
 	 * 
 	 * @param value
-	 * This method watch if a integer is in the domain
+	 * This method watch if an integer is in the domain
 	 */
 	public boolean contains(int value) {
-		// TODO - implement Domain.contains
-		if (this.presence[this.max - value] == true) {
-			return true;
-		} else {
-			return false;
-		}
+        if (value < min || value > max) {
+            return false;
+        }
+        return this.presence[value - this.min];
 	}
 
 	public int size() {
-		// TODO - implement Domain.size
-		throw new UnsupportedOperationException();
+        int count = 0;
+        for (boolean b : this.presence) {
+            if (b) {
+                count++;
+            }
+        }
+        return count;
 	}
 
 }
