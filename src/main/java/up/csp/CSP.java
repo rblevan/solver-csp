@@ -61,32 +61,8 @@ public class CSP {
 	}
 
 	public void solve() {
-		if (isComplete()) 
-		{
-			if (isSatisfied()) 
-			{
-				System.out.println("Solution found: " + variables);
-			} else {
-				System.out.println("No solution found.");
 			}
-			return;
-		}
-
-		for (Variable var : variables) {
-			if (!var.isAssigned()) 
-			{
-				for (int value : var.getDomain().getValues()) 
-				{
-					var.assign(value);
-					if (isSatisfied()) 
-					{
-						solve();
-					}
-					var.unassign();
-				}
-				return;
-			}
-		}
+		
 
 	}
 

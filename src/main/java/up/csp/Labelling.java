@@ -2,37 +2,59 @@ package up.csp;
 
 import java.util.Random;
 
-public class Labelling {
+public class Labelling 
+{
+	public static final int VAR_FIRST_UNASSIGNED = 0;
+	public static final int VAR_MIN = 1;
+	public static final int VAR_RANDOM = 2;
 
-	public enum VarStrategy 
-	{
-    	FIRST_UNASSIGNED,  // première variable non assignée
-    	MIN_REMAINING,     // plus petit domaine (MRV)
-    	RANDOM             // aléatoire
-	}
+	public static final int VAL_IN_ORDER = 0;
+	public static final int VAL_RANDOM = 1;
 
-	public enum ValStrategy 
-	{
-   		IN_ORDER,   // ordre croissant
-    	RANDOM      // aléatoire
-	}
+	private int varStrategy = VAR_FIRST_UNASSIGNED; // Default variable selection strategy but can be changed to VAR_MIN or VAR_RANDOM
+	private int valStrategy = VAL_IN_ORDER; // Default value selection strategy but can be changed to VAL_RANDOM
 
-	private VarStrategy varStrategy = VarStrategy.FIRST_UNASSIGNED;
-	private ValStrategy valStrategy = ValStrategy.IN_ORDER;
 	private final Random random = new Random();
 
-	public void setVarStrategy(VarStrategy strategy) 
+	public void setVarStrategy(int strategy) 
 	{
     	this.varStrategy = strategy;
 	}
 
-	public void setValStrategy(ValStrategy strategy)
+	public void setValStrategy(int strategy)
 	{
     	this.valStrategy = strategy;
 	}
 
-	
-	
+	public Variable selectVariable(CSP csp) 
+	{
+		if (varStrategy == VAR_FIRST_UNASSIGNED) {
+			//code to select the first unassigned variable
+			return null;
+		}
+		if (varStrategy == VAR_MIN) {
+			//code to select the variable with the smallest domain
+			return null;
+		}
+		if (varStrategy == VAR_RANDOM) {
+			//code to select a random unassigned variable
+			return null;
+		}
+		return null;
+	}
 
+	public int selectValue(Variable variable) 
+	{
+		if (valStrategy == VAL_IN_ORDER) {
+			//code to select the next value in order
+			return 0;
+		}
+		if (valStrategy == VAL_RANDOM) {
+			//code to select a random value 
+			return 0;
+		}
+		return -1;
+	}
 
+	
 }
