@@ -2,9 +2,9 @@ package up.csp;
 
 public class BacktrackStep {
 
-	private Variable var;
-	private int value;
-	private String reason;
+	private final Variable var;
+	private final int value;
+	private final String reason;
 
 	/**
 	 * 
@@ -12,9 +12,11 @@ public class BacktrackStep {
 	 * @param val
 	 * @param reason
 	 */
+
 	public BacktrackStep(Variable var, int val, String reason) {
-		// TODO - implement BacktrackStep.BacktrackStep
-		throw new UnsupportedOperationException();
+        this.var = var;
+        this.value = val;
+        this.reason = reason;
 	}
 
 }
