@@ -1,7 +1,5 @@
 package up.csp.constraint;
 
-import java.util.Objects;
-
 import up.csp.Variable;
 
 public class BinaryConstraint extends Constraint{
@@ -34,7 +32,7 @@ public class BinaryConstraint extends Constraint{
         switch (mode){
             case 'e' -> {
                     if(varA.isAssigned() &&varB.isAssigned()){
-                        res= Objects.equals(varA.getValue(), varB.getValue());
+                        res= varA.getValue()== varB.getValue()+constant;
                     }
                 }
             case 'd' -> {

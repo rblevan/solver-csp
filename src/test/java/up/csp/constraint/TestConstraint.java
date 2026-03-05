@@ -1,5 +1,7 @@
 package up.csp.constraint;
 
+import java.util.ArrayList;
+
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 import org.junit.Test;
@@ -24,21 +26,58 @@ public class TestConstraint{
 
     @Test
     public void testBinary(){
-        Variable a = new Variable("a",new Domain(0,10),null);
-        Variable b = new Variable("b", new Domain(0,10), null);
+        Variable a = new Variable("a",null,null);
+        Variable b = new Variable("b", null, null);
         int constant = 0;
-        Constraint equals = Constraint.equal(a,b);
+        Constraint equals = Constraint.equal(a,b,constant);
         Constraint different = Constraint.different(a,b, constant);
         Constraint under = Constraint.under(a,b,constant);
+
         assertFalse(equals.check());
         assertFalse(different.check());
         assertFalse(under.check());
+
         a.assign(1);
         b.assign(2);
+
         assertFalse(equals.check());
         assertTrue(different.check());
         assertTrue(under.check());
+
         a.assign(2);
+
         assertTrue(equals.check());
+        assertFalse(different.check());
+        assertFalse(under.check());
+
+        constant = 3;
+        equals = Constraint.equal(a,b,constant);
+        different = Constraint.different(a,b, constant);
+        under = Constraint.under(a,b,constant);
+        
+        assertFalse(equals.check());
+        assertTrue(different.check());
+        assertTrue(under.check());
+
+        constant = -3;
+        different = Constraint.different(a,b, constant);
+        under = Constraint.under(a,b,constant);
+        equals = Constraint.equal(a,b,constant);
+
+        assertFalse(equals.check());
+        assertTrue(different.check());
+        assertFalse(under.check());
     }   
+
+    @Test
+    public void testAllDifferent(){
+        ArrayList<Variable> vars = new ArrayList<>();
+        for(int i=0;i<10;i++){
+            vars.add(new Variable(Integer.toString(i),null,i));
+        }
+        AllDifferent diff = Constraint.allDifferent(vars);
+        assertTrue(diff.check());
+        vars.get(9).assign(1);
+        assertFalse(diff.check());
+    }
 }

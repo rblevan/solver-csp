@@ -1,6 +1,7 @@
 package up.csp.constraint;
 
-import java.util.*;
+import java.util.ArrayList;
+
 import up.csp.Variable;
 public abstract class Constraint {
 
@@ -30,8 +31,8 @@ public abstract class Constraint {
 	 * @param b deuxième variable sur le quel il faut vérifier l'égalité
 	 * @return contrainte binaire représentant l'égalité a=b
 	 */
-	public static BinaryConstraint equal(Variable a,Variable b){
-		return new BinaryConstraint(a, b, 0, 'e');
+	public static BinaryConstraint equal(Variable a,Variable b,int c){
+		return new BinaryConstraint(a, b, c, 'e');
 	}
 	
 	/**@author Chloé lemaire
