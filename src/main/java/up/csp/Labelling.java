@@ -1,23 +1,38 @@
 package up.csp;
 
+import java.util.Random;
+
 public class Labelling {
 
-	/**
-	 * 
-	 * @param vars
-	 */
-	public void selectVariable(List vars) {
-		// TODO - implement Labelling.selectVariable
-		throw new UnsupportedOperationException();
+	public enum VarStrategy 
+	{
+    	FIRST_UNASSIGNED,  // première variable non assignée
+    	MIN_REMAINING,     // plus petit domaine (MRV)
+    	RANDOM             // aléatoire
 	}
 
-	/**
-	 * 
-	 * @param var
-	 */
-	public int[] sortValues(Variable var) {
-		// TODO - implement Labelling.sortValues
-		throw new UnsupportedOperationException();
+	public enum ValStrategy 
+	{
+   		IN_ORDER,   // ordre croissant
+    	RANDOM      // aléatoire
 	}
+
+	private VarStrategy varStrategy = VarStrategy.FIRST_UNASSIGNED;
+	private ValStrategy valStrategy = ValStrategy.IN_ORDER;
+	private final Random random = new Random();
+
+	public void setVarStrategy(VarStrategy strategy) 
+	{
+    	this.varStrategy = strategy;
+	}
+
+	public void setValStrategy(ValStrategy strategy)
+	{
+    	this.valStrategy = strategy;
+	}
+
+	
+	
+
 
 }

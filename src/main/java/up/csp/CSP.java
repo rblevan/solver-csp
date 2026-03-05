@@ -5,26 +5,89 @@ import java.util.Collection;
 
 public class CSP {
 
-	private Collection<Variable> variables; 
-	private Collection<Constraint> constraints;
+	/*
+	* This class represents a Constraint Satisfaction Problem (CSP). It contains a collection of variables and a collection of constraints.
+	*/
+	private final Collection<Variable> variables; 
+	private final Collection<Constraint> constraints;
 
-	public CSP() {
-		variables = new ArrayList<Variable>();
-		constraints = new ArrayList<Constraint>();
+	public CSP() 
+	{
+		variables = new ArrayList<>();
+		constraints = new ArrayList<>();
+	}
+
+	/* 
+	 *	@param v the variable to be added to the CSP
+	 */
+	public void addVariable(Variable v) 
+	{
+		variables.add(v);
+	}
+	
+	/* 
+	 * @param c the constraint to be added to the CSP
+	 */
+	public void addConstraint(Constraint c) 
+	{
+		constraints.add(c);
+	}
+
+	/*
+	 * @return true if all variables in the CSP are assigned, false otherwise.
+	 */
+	public boolean isComplete() 
+	{
+		for (Variable v : variables) {
+			if (!v.isAssigned()) {
+				return false;
+			}
+		}
+		return true;
+	}
+
+	/*
+	 * @return true if all constraints in the CSP are satisfied, false otherwise.
+	 */
+	
+	public boolean isSatisfied() 
+	{
+		for (Constraint c : constraints) {
+			if (!c.isSatisfied()) {
+				return false;
+			}
+		}
+		return true;
 	}
 
 	public void solve() {
-		// TODO - implement CSP.solve
-		throw new UnsupportedOperationException();
-	}
+		if (isComplete()) 
+		{
+			if (isSatisfied()) 
+			{
+				System.out.println("Solution found: " + variables);
+			} else {
+				System.out.println("No solution found.");
+			}
+			return;
+		}
 
-	/**
-	 * 
-	 * @param var
-	 */
-	public void forwardCheck(Variable var) {
-		// TODO - implement CSP.forwardCheck
-		throw new UnsupportedOperationException();
+		for (Variable var : variables) {
+			if (!var.isAssigned()) 
+			{
+				for (int value : var.getDomain().getValues()) 
+				{
+					var.assign(value);
+					if (isSatisfied()) 
+					{
+						solve();
+					}
+					var.unassign();
+				}
+				return;
+			}
+		}
+
 	}
 
 }
