@@ -3,9 +3,9 @@ package up.csp.constaint;
 import up.csp.Variable;
 public class UnaryConstraint extends Constraint{
 
-    private Variable var ;
-    private boolean equals ;
-    private int value;
+    private final Variable var ;
+    private final boolean equals ;
+    private final int value;
 
     /**@author Chloé Lemaire
     @param v la variable à comparer
@@ -18,6 +18,7 @@ public class UnaryConstraint extends Constraint{
         this.value =value; 
     }
 
+    @Override
     public boolean check(){
         if(equals){
             return var.getValue()==value;

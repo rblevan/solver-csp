@@ -1,12 +1,14 @@
 package up.csp.constaint;
 
+import java.util.Objects;
+
 import up.csp.Variable;
 
 public class BinaryConstraint extends Constraint{
-    private Variable varA ;
-    private Variable varB ;
-    private int constant ;
-    private char mode;
+    private final Variable varA ;
+    private final Variable varB ;
+    private final int constant ;
+    private final char mode;
 
     /**@author Chloé Lemaire
     @param a variable à gauche de la contrainte dans a=b,a!=b+c et a<b+c
@@ -30,12 +32,9 @@ public class BinaryConstraint extends Constraint{
     public boolean check() {
         boolean res = false;
         switch (mode){
-            case 'e':
-                res= varA.getValue()==varB.getValue();
-            case 'd':
-                res= varA.getValue()!=varB.getValue()+constant;
-            case 'u':
-                res= varA.getValue()<varB.getValue()+constant;
+            case 'e' -> res= Objects.equals(varA.getValue(), varB.getValue());
+            case 'd' -> res= varA.getValue()!=varB.getValue()+constant;
+            case 'u' -> res= varA.getValue()<varB.getValue()+constant;
         }
         return res;
     }
