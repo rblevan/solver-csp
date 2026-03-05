@@ -16,6 +16,11 @@ public class Domain {
 	public Domain(int min, int max) {
 		this.min = min;
 		this.max = max;
+		if (this.min > this.max) {
+			int temp = this.min;
+			this.min = this.max;
+			this.max = temp;
+		}
 		this.presence = new boolean[this.max - this.min + 1];
         Arrays.fill(this.presence, true);
     }
@@ -51,6 +56,15 @@ public class Domain {
             }
         }
         return count;
+	}
+
+	
+	public int getMin() {
+		return this.min;
+	}
+
+	public int getMax() {
+		return this.max;
 	}
 
 }

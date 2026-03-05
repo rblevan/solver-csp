@@ -24,4 +24,9 @@ public class TestDomain {
         assert !domain.contains(5);
     }
 
+    @Test
+    public void testDomainCreationNegative() {
+        Domain domain = new Domain(-4, -10);
+        assert domain.size() == 7;
+    }
 }
