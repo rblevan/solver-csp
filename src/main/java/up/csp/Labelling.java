@@ -16,16 +16,32 @@ public class Labelling
 
 	private final Random random = new Random();
 
+	/**
+	 * Sets the variable selection strategy.
+	 *
+	 * @param strategy strategy to use
+	 */
 	public void setVarStrategy(int strategy) 
 	{
     	this.varStrategy = strategy;
 	}
 
+	/**
+	 * Sets the value selection strategy.
+	 *
+	 * @param strategy strategy to use
+	 */
 	public void setValStrategy(int strategy)
 	{
     	this.valStrategy = strategy;
 	}
 
+	/**
+	 * Selects the next variable to assign according to the current strategy.
+	 *
+	 * @param csp CSP problem that contains variables and constraints
+	 * @return 
+	 */
 	public Variable selectVariable(CSP csp) 
 	{
 		if (varStrategy == VAR_FIRST_UNASSIGNED) {
@@ -43,6 +59,12 @@ public class Labelling
 		return null;
 	}
 
+	/**
+	 * Selects the next value to try for a given variable.
+	 *
+	 * @param variable variable for which a value must be selected
+	 * @return 
+	 */
 	public int selectValue(Variable variable) 
 	{
 		if (valStrategy == VAL_IN_ORDER) {
@@ -56,5 +78,4 @@ public class Labelling
 		return -1;
 	}
 
-	
 }
