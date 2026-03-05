@@ -1,4 +1,4 @@
-package up.csp.constaint;
+package up.csp.constraint;
 
 
 import java.util.List;

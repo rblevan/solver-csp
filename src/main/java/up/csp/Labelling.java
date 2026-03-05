@@ -1,12 +1,14 @@
 package up.csp;
 
+import java.util.List;
+
 public class Labelling {
 
 	/**
 	 * 
 	 * @param vars
 	 */
-	public void selectVariable(List vars) {
+	public void selectVariable(List<Variable> vars) {
 		// TODO - implement Labelling.selectVariable
 		throw new UnsupportedOperationException();
 	}
