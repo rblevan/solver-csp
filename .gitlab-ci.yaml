@@ -1,4 +1,4 @@
-image: maven:4.0-openjdk-17
+image: ubuntu:22.04
 
 stages:
   - build
@@ -7,10 +7,8 @@ stages:
 compilation :
   stage : build
   script :
-    - apt-get update
-    - echo 'update fait'
-    
-
+    - echo 'faut faire le build'
+  
 tests : 
   stage : test
   script :
