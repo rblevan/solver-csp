@@ -31,6 +31,7 @@ public class Variable {
     /**
      * @author Nicolas ITEY
      * @param value the value of the Variable 
+     * @throws IllegalArgumentException if the parameter is invalid
      * the function will assign the value searched to the Variable.
      */
     public void assign(int value) {
@@ -44,7 +45,7 @@ public class Variable {
 
     /**
      * @author Nicolas ITEY
-     * 
+     * this function will unassign the value of the Variable and turn it into null
      */
     public void unassign() {
         if (isAssigned()) {
@@ -53,8 +54,8 @@ public class Variable {
     }
 
     /**
-     * @author Nicolas ITEY
-     * @return
+     * @author Nicolas ITEY 
+     * Get the name
      */
     public String getName() {
 
@@ -63,7 +64,7 @@ public class Variable {
 
     /**
      * @author Nicolas ITEY
-     * @return
+     * Get the domain
      */
     public Domain getDomain() {
 
@@ -72,7 +73,7 @@ public class Variable {
 
     /**
      * @author Nicolas ITEY
-     * @return
+     * Get the Value
      */
     public Integer getValue() {
 
