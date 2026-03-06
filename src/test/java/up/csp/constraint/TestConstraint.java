@@ -26,8 +26,8 @@ public class TestConstraint{
 
     @Test
     public void testBinary(){
-        Variable a = new Variable("a",null);
-        Variable b = new Variable("b", null);
+        Variable a = new Variable("a",new Domain(0,20));
+        Variable b = new Variable("b", new Domain(0,20));
         int constant = 0;
         Constraint equals = Constraint.equal(a,b,constant);
         Constraint different = Constraint.different(a,b, constant);
@@ -73,7 +73,7 @@ public class TestConstraint{
     public void testAllDifferent(){
         ArrayList<Variable> vars = new ArrayList<>();
         for(int i=0;i<10;i++){
-            Variable v = new Variable(Integer.toString(i),null);
+            Variable v = new Variable(Integer.toString(i),new Domain(0,20));
             vars.add(v);
             v.assign(i);
         }
