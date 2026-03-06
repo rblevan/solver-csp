@@ -1,4 +1,5 @@
 package up.csp;
+
 ;
 
 public class Variable {
@@ -7,28 +8,39 @@ public class Variable {
     private Domain domain; // The domain must be enumerable,so it must be a sequence 
     private Integer value; // must be null if unassigned. this is the assigned value you are trying to find    
 
-    /**@author Nicolas ITEY
-    @param 
-    @param
-    @param 
-    */
-    public Variable(String name, Domain domain, Integer value) {
+    /**
+     * @author Nicolas ITEY This is the constructor for the Variable class
+     * @param name
+     * @param domain
+     * @param value
+     * @return A FAIRE
+     */
+
+    //peut etre rajouté un idvalutaion pour trouver la position dans le tableau
+    public Variable(String name, Domain domain) {
         this.name = name;
         this.domain = domain;
-        this.value = value;
 
     }
-     public boolean isAssigned() {
+
+    public boolean isAssigned() {
         return value != null;
     }
 
-    public void assign(int v) {
-        this.value = v;
+    public void assign(int value) {
+        if (!domain.contains(value)) {
+            throw new IllegalArgumentException(
+                    "Value " + value + " not in domain"
+            );
+        }
+        this.value = value;
     }
 
     public void unassign() {
+    if (isAssigned()) {
         this.value = null;
     }
+}
 
     public String getName() {
 

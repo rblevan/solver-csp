@@ -1,5 +1,5 @@
 package up.csp;
-
+import java.util.List;
 public class Labelling {
 
 	/**
