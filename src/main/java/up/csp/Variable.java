@@ -12,10 +12,9 @@ public class Variable {
     @param
     @param 
     */
-    public Variable(String name, Domain domain, Integer value) {
+    public Variable(String name, Domain domain) {
         this.name = name;
         this.domain = domain;
-        this.value = value;
 
     }
      public boolean isAssigned() {

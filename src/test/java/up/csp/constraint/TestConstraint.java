@@ -13,7 +13,7 @@ public class TestConstraint{
 
     @Test
     public void testUnary(){
-        Variable a = new Variable("a",new Domain(0,10),null);
+        Variable a = new Variable("a",new Domain(0,10));
         Constraint equality = Constraint.equal(a,10);
         assertFalse(equality.check());
         a.assign(10);
@@ -26,8 +26,8 @@ public class TestConstraint{
 
     @Test
     public void testBinary(){
-        Variable a = new Variable("a",null,null);
-        Variable b = new Variable("b", null, null);
+        Variable a = new Variable("a",null);
+        Variable b = new Variable("b", null);
         int constant = 0;
         Constraint equals = Constraint.equal(a,b,constant);
         Constraint different = Constraint.different(a,b, constant);
@@ -73,7 +73,9 @@ public class TestConstraint{
     public void testAllDifferent(){
         ArrayList<Variable> vars = new ArrayList<>();
         for(int i=0;i<10;i++){
-            vars.add(new Variable(Integer.toString(i),null,i));
+            Variable v = new Variable(Integer.toString(i),null);
+            vars.add(v);
+            v.assign(i);
         }
         AllDifferent diff = Constraint.allDifferent(vars);
         assertTrue(diff.check());
