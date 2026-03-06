@@ -7,6 +7,7 @@ import java.util.Objects;
 import up.csp.Variable;
 public class AllDifferent {
     private final List<Variable> variables;
+    
     /**@author Chloé Lemaire
     @param differentVariables liste de variables qui doivent tous être différents
     */
