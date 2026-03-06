@@ -58,7 +58,7 @@ public class Domain {
         return count;
 	}
 
-	
+
 	public int getMin() {
 		return this.min;
 	}
