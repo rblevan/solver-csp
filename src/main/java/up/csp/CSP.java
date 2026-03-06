@@ -1,15 +1,16 @@
 package up.csp;
 
 import java.util.ArrayList;
-import java.util.Collection;
+
+import up.csp.constaint.Constraint;
 
 public class CSP {
 
 	/*
 	* This class represents a Constraint Satisfaction Problem (CSP). It contains a collection of variables and a collection of constraints.
 	*/
-	private final Collection<Variable> variables; 
-	private final Collection<Constraint> constraints;
+	private final ArrayList<Variable> variables; 
+	private final ArrayList<Constraint> constraints;
 
 	public CSP() 
 	{
@@ -24,7 +25,9 @@ public class CSP {
 	{
 		variables.add(v);
 	}
-	
+	protected ArrayList<Variable> getVariables(){
+		return variables;
+	}
 	/* 
 	 * @param c the constraint to be added to the CSP
 	 */
@@ -53,7 +56,7 @@ public class CSP {
 	public boolean isSatisfied() 
 	{
 		for (Constraint c : constraints) {
-			if (!c.isSatisfied()) {
+			if (!c.check()) {
 				return false;
 			}
 		}
@@ -61,7 +64,9 @@ public class CSP {
 	}
 
 	public void solve() {
-			}
+	
+	
+	}
 		
 
 	}

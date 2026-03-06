@@ -1,5 +1,6 @@
 package up.csp;
 
+import java.util.ArrayList;
 import java.util.Random;
 
 public class Labelling 
@@ -53,8 +54,8 @@ public class Labelling
 			return null;
 		}
 		if (varStrategy == VAR_RANDOM) {
-			//code to select a random unassigned variable
-			return null;
+			ArrayList<Variable> allVars = csp.getVariables();
+			return allVars.get(random.nextInt()%allVars.size());
 		}
 		return null;
 	}
