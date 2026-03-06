@@ -1,7 +1,5 @@
 package up.csp;
 
-;
-
 public class Variable {
 
     private String name; // Unique name for the Variable
@@ -13,20 +11,28 @@ public class Variable {
      * @param name
      * @param domain
      * @param value
-     * @return A FAIRE
+     * Constructor of the class Variable 
      */
-
-    //peut etre rajouté un idvalutaion pour trouver la position dans le tableau
     public Variable(String name, Domain domain) {
         this.name = name;
         this.domain = domain;
 
     }
 
+    /**
+     * @author Nicolas ITEY
+     * @return  a boolean 
+     * The function verify if the value has been assigned or not,return true if it has and false if it hasn't.
+     */
     public boolean isAssigned() {
         return value != null;
     }
 
+    /**
+     * @author Nicolas ITEY
+     * @param value the value of the Variable 
+     * the function will assign the value searched to the Variable.
+     */
     public void assign(int value) {
         if (!domain.contains(value)) {
             throw new IllegalArgumentException(
@@ -36,22 +42,38 @@ public class Variable {
         this.value = value;
     }
 
+    /**
+     * @author Nicolas ITEY
+     * 
+     */
     public void unassign() {
-    if (isAssigned()) {
-        this.value = null;
+        if (isAssigned()) {
+            this.value = null;
+        }
     }
-}
 
+    /**
+     * @author Nicolas ITEY
+     * @return
+     */
     public String getName() {
 
         return this.name;
     }
 
+    /**
+     * @author Nicolas ITEY
+     * @return
+     */
     public Domain getDomain() {
 
         return this.domain;
     }
 
+    /**
+     * @author Nicolas ITEY
+     * @return
+     */
     public Integer getValue() {
 
         return this.value;

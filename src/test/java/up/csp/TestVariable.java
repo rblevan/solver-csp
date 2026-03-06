@@ -28,7 +28,7 @@ public class TestVariable {
     void shouldReturnTrueWhenAssigned() {
        
 
-        var.assign(5);
+        var.assign(15);
 
         assertTrue(var.isAssigned());
     }
