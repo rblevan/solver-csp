@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 ### IntelliJ IDEA ###
 out/
 !**/src/main/**/out/
@@ -31,9 +30,5 @@ bin/
 ### Mac OS ###
 .DS_Store
 
-/target/
+target/*
 
-=======
-*.idea/
-*.code/
->>>>>>> d2a2d05 (rajout git ignore)
