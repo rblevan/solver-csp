@@ -1,5 +1,7 @@
 package up.csp;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 
 public class Labelling 
@@ -44,19 +46,35 @@ public class Labelling
 	 */
 	public Variable selectVariable(CSP csp) 
 	{
-		if (varStrategy == VAR_FIRST_UNASSIGNED) {
-			//code to select the first unassigned variable
+		List<Variable> v_unassigned = new ArrayList<>();
+		for (Variable variable : csp.getVariables()) {
+			if (!variable.isAssigned()) 
+			{
+				v_unassigned.add(variable);
+			}
+		}
+
+		if (v_unassigned.isEmpty()) 
+		{
 			return null;
 		}
+
+		if (varStrategy == VAR_FIRST_UNASSIGNED) 
+		{
+			return v_unassigned.get(0);
+		}
+
 		if (varStrategy == VAR_MIN) {
-			//code to select the variable with the smallest domain
-			return null;
+			//find the variable with the min domain selected variable + compaire with the precedent et le suivant 
+			return //la variable ;
 		}
-		if (varStrategy == VAR_RANDOM) {
-			//code to select a random unassigned variable
-			return null;
+
+		if (varStrategy == VAR_RANDOM) 
+		{
+			//return unassigned.get(random ...);
 		}
-		return null;
+
+		return v_unassigned.get(0);
 	}
 
 	/**
@@ -67,15 +85,29 @@ public class Labelling
 	 */
 	public int selectValue(Variable variable) 
 	{
-		if (valStrategy == VAL_IN_ORDER) {
-			//code to select the next value in order
-			return 0;
+		if (variable == null || variable.getDomain() == null) {
+			return -1;
 		}
+		//avoir un domain 
+		Domain domain = variable.getDomain();
+
+		}
+
+		if (//domain.isempty) 
+		{
+			return -1;
+		}
+
+		if (valStrategy == VAL_IN_ORDER) 
+			{
+			return //retourne la premiere valeur ! faut il agir sur le domaine avant mettre en ordre ? 
+		}
+
 		if (valStrategy == VAL_RANDOM) {
-			//code to select a random value 
-			return 0;
+			return //prendre les valeurs du domain + random 
 		}
-		return -1;
+
+		return availableValues.get(0);
 	}
 
 }

@@ -2,6 +2,9 @@ package up.csp;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Collections;
+
+import up.csp.constaint.Constraint;
 
 public class CSP {
 
@@ -33,6 +36,16 @@ public class CSP {
 		constraints.add(c);
 	}
 
+	public Collection<Variable> getVariables()
+	{
+		return Collections.unmodifiableCollection(variables);
+	}
+
+	public Collection<Constraint> getConstraints()
+	{
+		return Collections.unmodifiableCollection(constraints);
+	}
+
 	/*
 	 * @return true if all variables in the CSP are assigned, false otherwise.
 	 */
@@ -53,15 +66,16 @@ public class CSP {
 	public boolean isSatisfied() 
 	{
 		for (Constraint c : constraints) {
-			if (!c.isSatisfied()) {
+			if (!c.check()) {
 				return false;
 			}
 		}
 		return true;
 	}
 
-	public void solve() {
-			}
+	public void solve()
+	{
 		
+	}
 
 	}

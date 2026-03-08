@@ -53,4 +53,14 @@ public class Domain {
         return count;
 	}
 
+
+	//A AJOUTER DANS MAIN
+	public int getMin() {
+		return this.min;
+	}
+
+	public int getMax() {
+		return this.max;
+	}
+
 }
