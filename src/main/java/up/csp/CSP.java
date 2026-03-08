@@ -3,21 +3,21 @@ package up.csp;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.List;
 
-import up.csp.constaint.Constraint;
+import up.csp.constraint.Constraint;
 
 public class CSP {
 
-	/*
-	* This class represents a Constraint Satisfaction Problem (CSP). It contains a collection of variables and a collection of constraints.
-	*/
 	private final ArrayList<Variable> variables; 
 	private final ArrayList<Constraint> constraints;
+	private final Labelling labelling;
 
 	public CSP() 
 	{
 		variables = new ArrayList<>();
 		constraints = new ArrayList<>();
+		labelling = new Labelling();
 	}
 
 	/* 
@@ -43,6 +43,16 @@ public class CSP {
 	public Collection<Constraint> getConstraints()
 	{
 		return Collections.unmodifiableCollection(constraints);
+	}
+
+	public void setVarStrategy(int strategy)
+	{
+		labelling.setVarStrategy(strategy);
+	}
+
+	public void setValStrategy(int strategy)
+	{
+		labelling.setValStrategy(strategy);
 	}
 
 	/*
@@ -72,9 +82,27 @@ public class CSP {
 		return true;
 	}
 
-	public void solve()
+
+	public boolean solve()
 	{
-		
-	}
+		if (isComplete()) {
+			return isSatisfied();
+		} else {
+			Variable variable = labelling.selectVariable(this);
+			if (variable == null) {
+				return false;
+			} else {
+				List<Integer> values = labelling.orderValues(variable);
+				for (int value : values) {
+					variable.assign(value);
+					if (solve()) {
+						return true;
+					} else {
+						variable.unassign();
+					}
+				}
+				return false;
+			}
+		}	}
 
 	}

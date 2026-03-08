@@ -1,6 +1,7 @@
 package up.csp;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Random;
 
@@ -18,106 +19,85 @@ public class Labelling
 
 	private final Random random = new Random();
 
-	/**
-	 * Sets the variable selection strategy.
-	 *
-	 * @param strategy strategy to use
-	 */
 	public void setVarStrategy(int strategy) 
 	{
-    	this.varStrategy = strategy;
+		switch (strategy) {
+			case VAR_FIRST_UNASSIGNED:
+			case VAR_MIN:
+			case VAR_RANDOM:
+				this.varStrategy = strategy;
+				break;
+			default:
+				throw new IllegalArgumentException("Unknown variable strategy: " + strategy);
+		}
 	}
 
-	/**
-	 * Sets the value selection strategy.
-	 *
-	 * @param strategy strategy to use
-	 */
 	public void setValStrategy(int strategy)
-	{
-    	this.valStrategy = strategy;
+	{	switch (strategy) {
+			case VAL_IN_ORDER:
+			case VAL_RANDOM:
+				this.valStrategy = strategy;
+				break;
+			default:
+				throw new IllegalArgumentException("Unknown value strategy: " + strategy);
+		}
 	}
 
-	/**
-	 * Selects the next variable to assign according to the current strategy.
-	 *
-	 * @param csp CSP problem that contains variables and constraints
-	 * @return 
-	 */
 	public Variable selectVariable(CSP csp) 
 	{
-		List<Variable> v_unassigned = new ArrayList<>();
+		if (csp == null) {
+			return null;
+		}
+
+		List<Variable> v_unassigned =new ArrayList<>();
 		for (Variable variable : csp.getVariables()) {
 			if (!variable.isAssigned()) 
 			{
 				v_unassigned.add(variable);
 			}
 		}
-
 		if (v_unassigned.isEmpty()) 
-		{
-			return null;
-		}
+		{return null;}
 
 		if (varStrategy == VAR_FIRST_UNASSIGNED) 
 		{
-			return v_unassigned.get(0);
-		}
+			return v_unassigned.get(0);	}
 
 		if (varStrategy == VAR_MIN) {
-			//find the variable with the min domain selected variable + compaire with the precedent et le suivant 
-			return //la variable ;
+			Variable best= v_unassigned.get(0);
+			for (Variable curr : v_unassigned) {
+				if (curr.getDomain().size() < best.getDomain().size()) {
+					best = curr;
+				}
+			}return best;
 		}
-		if (varStrategy == VAR_RANDOM) {
-			ArrayList<Variable> allVars = csp.getVariables();
-			return allVars.get(random.nextInt()%allVars.size());
+		if (varStrategy ==VAR_RANDOM) {
+			return v_unassigned.get(random.nextInt(v_unassigned.size()));
 		}
 
 		return v_unassigned.get(0);
 	}
 
-	/**
-	 * Selects the next value to try for a given variable.
-	 *
-	 * @param variable variable for which a value must be selected
-	 * @return 
-	 */
-	public int selectValue(Variable variable) 
+/* 
+	public List<Integer> orderValues(Variable variable)
 	{
+		List<Integer> availableValues = new ArrayList<>();
 		if (variable == null || variable.getDomain() == null) {
-			return -1;
+			return availableValues;
 		}
-		//avoir un domain 
 		Domain domain = variable.getDomain();
-
-		}
-
-		if (//domain.isempty) 
-		{
-			return -1;
-		}
-
-		if (valStrategy == VAL_IN_ORDER) 
-			{
-ir sur le domaine avant mettre en ordre ? 
+		for (int value =domain.getMin(); value <= domain.getMax(); value++) {
+			if (domain.contains(value)) {
+				availableValues.add(value);
+			}
 		}
 
 		if (valStrategy == VAL_RANDOM) {
-			return //prendre les valeurs du domain + random 
+			Collections.shuffle(availableValues, random);
 		}
 
-		return availableValues.get(0);
+		return availableValues;
 	}
 
 }
-			return //retourne la premiere valeur ! faut il agir sur le domaine avant mettre en ordre ? 
-		}
-
-		if (valStrategy == VAL_RANDOM) {
-			return //prendre les valeurs du domain + random 
-		}
-
-		return availableValues.get(0);
-	}
-
-}
+*/
