@@ -1,7 +1,6 @@
 ### IntelliJ IDEA ###
 out/
 !**/src/main/**/out/
-!**/src/test/**/out/
 .kotlin
 # Ajout #
 .idea/*
@@ -17,7 +16,6 @@ satisfy.iml
 .sts4-cache
 bin/
 !**/src/main/**/bin/
-!**/src/test/**/bin/
 
 ### NetBeans ###
 /nbproject/private/
@@ -32,5 +30,5 @@ bin/
 ### Mac OS ###
 .DS_Store
 
-/target/
+target
 

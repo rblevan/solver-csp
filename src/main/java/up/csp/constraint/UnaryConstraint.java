@@ -1,4 +1,4 @@
-package up.csp.constaint;
+package up.csp.constraint;
 
 import up.csp.Variable;
 public class UnaryConstraint extends Constraint{
@@ -21,9 +21,14 @@ public class UnaryConstraint extends Constraint{
     @Override
     public boolean check(){
         if(equals){
-            return var.getValue()==value;
+            if(var.isAssigned()){
+                return var.getValue()==value;
+            }
         }else{
-            return var.getValue()!=value;
+            if(var.isAssigned()){
+                return var.getValue()!=value;
+            }
         }
+        return false;
     }
 }

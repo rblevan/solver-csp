@@ -1,6 +1,4 @@
-package up.csp.constaint;
-
-import java.util.Objects;
+package up.csp.constraint;
 
 import up.csp.Variable;
 
@@ -32,9 +30,21 @@ public class BinaryConstraint extends Constraint{
     public boolean check() {
         boolean res = false;
         switch (mode){
-            case 'e' -> res= Objects.equals(varA.getValue(), varB.getValue());
-            case 'd' -> res= varA.getValue()!=varB.getValue()+constant;
-            case 'u' -> res= varA.getValue()<varB.getValue()+constant;
+            case 'e' -> {
+                    if(varA.isAssigned() &&varB.isAssigned()){
+                        res= varA.getValue()== varB.getValue()+constant;
+                    }
+                }
+            case 'd' -> {
+                    if(varA.isAssigned() &&varB.isAssigned()){
+                        res= varA.getValue()!=varB.getValue()+constant;
+                    }
+                }
+            case 'u' -> {
+                    if(varA.isAssigned() &&varB.isAssigned()){
+                        res= varA.getValue()<varB.getValue()+constant;
+                    }
+                }
         }
         return res;
     }

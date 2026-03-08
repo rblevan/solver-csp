@@ -1,0 +1,15 @@
+image: ubuntu:22.04
+
+stages:
+  - build
+  - test
+
+compilation :
+  stage : build
+  script :
+    - echo 'faut faire le build'
+  
+tests : 
+  stage : test
+  script :
+    -echo 'faut faire les ci-cd tests'

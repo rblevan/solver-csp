@@ -99,6 +99,17 @@ public class Labelling
 
 		if (valStrategy == VAL_IN_ORDER) 
 			{
+ir sur le domaine avant mettre en ordre ? 
+		}
+
+		if (valStrategy == VAL_RANDOM) {
+			return //prendre les valeurs du domain + random 
+		}
+
+		return availableValues.get(0);
+	}
+
+}
 			return //retourne la premiere valeur ! faut il agir sur le domaine avant mettre en ordre ? 
 		}
 
