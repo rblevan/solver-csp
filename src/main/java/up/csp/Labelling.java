@@ -68,10 +68,9 @@ public class Labelling
 			//find the variable with the min domain selected variable + compaire with the precedent et le suivant 
 			return //la variable ;
 		}
-
-		if (varStrategy == VAR_RANDOM) 
-		{
-			//return unassigned.get(random ...);
+		if (varStrategy == VAR_RANDOM) {
+			ArrayList<Variable> allVars = csp.getVariables();
+			return allVars.get(random.nextInt()%allVars.size());
 		}
 
 		return v_unassigned.get(0);

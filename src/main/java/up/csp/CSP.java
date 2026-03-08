@@ -11,8 +11,8 @@ public class CSP {
 	/*
 	* This class represents a Constraint Satisfaction Problem (CSP). It contains a collection of variables and a collection of constraints.
 	*/
-	private final Collection<Variable> variables; 
-	private final Collection<Constraint> constraints;
+	private final ArrayList<Variable> variables; 
+	private final ArrayList<Constraint> constraints;
 
 	public CSP() 
 	{
@@ -27,7 +27,6 @@ public class CSP {
 	{
 		variables.add(v);
 	}
-	
 	/* 
 	 * @param c the constraint to be added to the CSP
 	 */
@@ -36,9 +35,9 @@ public class CSP {
 		constraints.add(c);
 	}
 
-	public Collection<Variable> getVariables()
+	public ArrayList<Variable> getVariables()
 	{
-		return Collections.unmodifiableCollection(variables);
+		return new ArrayList<>(variables);
 	}
 
 	public Collection<Constraint> getConstraints()
