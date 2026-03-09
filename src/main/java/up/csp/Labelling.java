@@ -78,7 +78,7 @@ public class Labelling
 		return v_unassigned.get(0);
 	}
 
-/* 
+
 	public List<Integer> orderValues(Variable variable)
 	{
 		List<Integer> availableValues = new ArrayList<>();
@@ -100,4 +100,3 @@ public class Labelling
 	}
 
 }
-*/
