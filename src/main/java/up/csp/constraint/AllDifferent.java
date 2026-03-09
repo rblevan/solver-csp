@@ -9,7 +9,7 @@ public class AllDifferent extends Constraint {
     private final List<Variable> variables;
     
     /**@author Chloé Lemaire
-    @param differentVariables liste de variables qui doivent tous être différents
+    @param differentVariables list of variables that needs to be different
     */
     protected AllDifferent(List<Variable> differentVariables){
         variables=differentVariables;
