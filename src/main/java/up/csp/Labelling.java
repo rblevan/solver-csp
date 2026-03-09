@@ -78,6 +78,15 @@ public class Labelling
 		return v_unassigned.get(0);
 	}
 
+  	public int selectValue(Variable variable)
+	{
+		List<Integer> values = orderValues(variable);
+		if (values.isEmpty()) {
+			throw new IllegalStateException("No available values : " + variable.getName());
+		}
+		return values.get(0);
+	}
+
 
 	public List<Integer> orderValues(Variable variable)
 	{
