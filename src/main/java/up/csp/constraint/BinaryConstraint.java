@@ -65,9 +65,27 @@ public class BinaryConstraint extends Constraint{
     @Override 
     public void set(){
         switch(mode){
-            case 'e' ->{}
-            case 'd' ->{}
-            case 'u' ->{}
+            case 'e' ->{varA.getDomain().intersection(varB.getDomain());}
+            case 'd' ->{if(varA.isAssigned()){
+                            varB.getDomain().removeValue(varA.getValue()-constant);
+                        }
+                        if(varB.isAssigned()){
+                            varA.getDomain().removeValue(varB.getValue()+constant);
+                        }
+                    }
+            case 'u' ->{
+                if(varA.isAssigned()){
+                    for(int i=varB.getDomain().getMin();i<varA.getValue()-constant;i++){
+                        varB.getDomain().removeValue(i-constant);
+                    }
+                }
+                if(varB.isAssigned()){
+                    for(int i = varA.getDomain().getMax();i>=varB.getValue()+constant;i--){
+                        varA.getDomain().removeValue(i);
+                    }
+                }
+
+            }
         }
     }
 

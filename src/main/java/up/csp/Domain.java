@@ -90,10 +90,13 @@ public class Domain {
 				int val = this.min + i;
 				if (!d.contains(val)) {
 					this.presence[i] = false;
+					d.removeValue(i);
 				}
 			}
 		}
 	}
+
+	
 
 	public int getMin() {
 		return this.min;

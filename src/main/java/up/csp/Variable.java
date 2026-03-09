@@ -85,4 +85,12 @@ public class Variable {
         return this.value;
 
     }
+
+   /**
+    * replaces the domain with a new one
+    * @param d domain to replace
+    */
+    protected void setDomain(Domain d){
+        domain=d;
+    }
 }
