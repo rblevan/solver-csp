@@ -9,10 +9,10 @@ public class BinaryConstraint extends Constraint{
     private final char mode;
 
     /**@author Chloé Lemaire
-    @param a variable à gauche de la contrainte dans a=b,a!=b+c et a<b+c
-    @param b variable à droite de la contrainte dans a=b,a!=b+c et a<b+c
-    @param c constante de la contrainte dans a=b,a!=b+c et a<b+c
-    @param mode charactere représentant quel opération calculer sur les variables
+    @param a left variable in : a=b,a!=b+c and a<b+c
+    @param b right variable in :  a=b,a!=b+c and a<b+c
+    @param c constant in : a=b,a!=b+c and a<b+c
+    @param mode character describing how to compare the variables e for equals d for different and u for under
     */
     protected BinaryConstraint(Variable a,Variable b,int constant,char mode){
         varA=a;
