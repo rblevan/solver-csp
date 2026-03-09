@@ -14,7 +14,7 @@ public class Domain {
 
 	private int min;
 	private int max;
-	private boolean[] presence;
+	private final boolean[] presence;
 
 	/**
 	 * Constructor for Domain class
@@ -29,7 +29,8 @@ public class Domain {
 			this.min = this.max;
 			this.max = temp;
 		}
-		this.presence = new boolean[this.max - this.min + 1];
+		int length = this.max - this.min + 1;
+		this.presence = new boolean[length];
         Arrays.fill(this.presence, true);
     }
 
@@ -98,7 +99,17 @@ public class Domain {
 		}
 	}
 
-	
+    protected Domain copy() {
+        Domain d =new Domain(min, max);
+		for(int i=0;i<min-max+1;i++){
+			if(!presence[i]){
+				d.removeValue(i+min);
+			}
+		}
+		return d;
+    }
+
+		
 
 	public int getMin() {
 		return this.min;
@@ -106,6 +117,15 @@ public class Domain {
 
 	public int getMax() {
 		return this.max;
+	}
+
+	@Override
+	public String toString() {
+		String res = "";
+		for(int i=0;i<max-min+1;i++){
+			res += "( "+(i+min)+" : "+Boolean.toString(presence[i])+" )";
+		}
+		return res;
 	}
 
 }

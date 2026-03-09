@@ -11,7 +11,7 @@ package up.csp;
  */
 public class Variable {
 
-    private String name;
+    private final String name;
     private Domain domain;
     private Integer value;
 
@@ -43,7 +43,7 @@ public class Variable {
     public void assign(int value) {
         if (!domain.contains(value)) {
             throw new IllegalArgumentException(
-                    "Value " + value + " not in domain"
+                    "Value " + value +" of variable "+ name+" not in domain "+domain
             );
         }
         this.value = value;
@@ -89,5 +89,10 @@ public class Variable {
     */
     protected void setDomain(Domain d){
         domain=d;
+    }
+
+    @Override
+    public String toString() {
+        return "variable "+name+" with value "+value+"\n has domain : \n"+domain;
     }
 }

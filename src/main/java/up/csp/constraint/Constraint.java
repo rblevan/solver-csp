@@ -60,7 +60,7 @@ public abstract class Constraint {
 	 * @param v list of variables that needs to be different
 	 * @return returns a constraint where all the variables are different
 	 */
-	public static AllDifferent allDifferent(ArrayList<Variable> v){
+	public static Constraint allDifferent(ArrayList<Variable> v){
 		return new AllDifferent(v);
 	}
 }
