@@ -1,4 +1,4 @@
-package up.csp.constraint;
+package up.csp;
 
 import java.util.ArrayList;
 
@@ -6,8 +6,7 @@ import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 import org.junit.Test;
 
-import up.csp.Domain;
-import up.csp.Variable;
+import up.csp.constraint.*;
 
 public class TestConstraint{
 
