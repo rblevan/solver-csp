@@ -10,8 +10,13 @@ import up.csp.Variable;
  * Implementation of Alldifferents constraint
  * @author Chloé Lemaire
  */
+<<<<<<< HEAD
 public class AllDifferent {
     private final List<Variable> variables;
+=======
+public class AllDifferent extends Constraint {
+    private final ArrayList<Variable> variables;
+>>>>>>> ef8ff3b (Update : doc)
     
     /**
     * @param differentVariables list of variables that needs to be different

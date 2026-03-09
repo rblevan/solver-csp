@@ -46,12 +46,17 @@ public class Domain {
 
 	/**
 <<<<<<< HEAD
+<<<<<<< HEAD
 	 *  Restore an integer to the domain
 	 * @param value integer to restore
 =======
 	 * @param value
 	 * This method restore an integer to the domain.
 >>>>>>> 9424030 (Update : doc BackTrack, Domain and Variable)
+=======
+	 *  Restore an integer to the domain
+	 * @param value integer to restore
+>>>>>>> ef8ff3b (Update : doc)
 	 * */
 	public void restoreValue(int value) {
 		if (value >= this.min && value <= this.max) {
