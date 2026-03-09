@@ -4,7 +4,6 @@ import java.util.Arrays;
 
 public class Domain {
 
-	private Variable domain;
 	private int min;
 	private int max;
 	private boolean[] presence;
