@@ -62,6 +62,26 @@ public class Labelling
 	}
 
 	/**
+	 * Returns the current variable selection strategy.
+	 *
+	 * @return current variable strategy constant
+	 */
+	public int getVarStrategy()
+	{
+		return varStrategy;
+	}
+
+	/**
+	 * Returns the current value ordering strategy.
+	 *
+	 * @return current value strategy constant
+	 */
+	public int getValStrategy()
+	{
+		return valStrategy;
+	}
+
+	/**
 	 * Selects the next variable to assign according to the configured strategy.
 	 *
 	 * @param csp CSP instance containing variables

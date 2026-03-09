@@ -79,6 +79,26 @@ public class CSP {
 	}
 
 	/**
+	 * Returns variable selection strategy used by labelling.
+	 *
+	 * @return current variable strategy constant
+	 */
+	public int getVarStrategy()
+	{
+		return labelling.getVarStrategy();
+	}
+
+	/**
+	 * Returns value ordering strategy used by labelling.
+	 *
+	 * @return current value strategy constant
+	 */
+	public int getValStrategy()
+	{
+		return labelling.getValStrategy();
+	}
+
+	/**
 	 * Checks whether all variables in the CSP are assigned.
 	 *
 	 * @return true if all variables are assigned, otherwise false
@@ -139,5 +159,6 @@ public class CSP {
 			}
 		}
 	}
+	
 
 }
