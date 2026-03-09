@@ -6,7 +6,7 @@ import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 import org.junit.Test;
 
-import up.csp.constraint.*;
+import up.csp.constraint.Constraint;
 
 public class TestConstraint{
 
@@ -74,7 +74,7 @@ public class TestConstraint{
             vars.add(v);
             v.assign(i);
         }
-        AllDifferent diff = Constraint.allDifferent(vars);
+        Constraint diff = Constraint.allDifferent(vars);
         assertTrue(diff.check());
         vars.get(9).assign(1);
         assertFalse(diff.check());

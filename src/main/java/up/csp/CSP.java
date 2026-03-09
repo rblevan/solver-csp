@@ -145,7 +145,13 @@ public class CSP {
 			} else {
 				List<Integer> values = labelling.orderValues(variable);
 				for (int value : values) {
-					ArrayList<Variable> temp = (ArrayList<Variable>)variables.clone();
+					ArrayList<Domain> temp = new ArrayList<>();
+					for(Variable v : variables){
+						temp.add(v.getDomain().copy());
+					}
+					if(!variable.getDomain().contains(value)){
+						continue;
+					}
 					variable.assign(value);
 					forwardCheck();
 					if (solve()) {
@@ -153,8 +159,8 @@ public class CSP {
 					} else {
 						for(int i=0;i<temp.size();i++){
 							Variable v = variables.get(i);
-							Variable v2 = temp.get(i);
-							v.setDomain(v2.getDomain());
+							Domain newDomain = temp.get(i);
+							v.setDomain(newDomain);
 						}
 						variable.getDomain().removeValue(value);
 						variable.unassign();
