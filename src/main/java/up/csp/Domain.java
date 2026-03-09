@@ -2,13 +2,22 @@ package up.csp;
 
 import java.util.Arrays;
 
+/**
+ * Represents the set of possible values for a {@link Variable}.
+ * <p>
+ * This class implements a domain using a boolean array to track the presence
+ * of values within a specific range [min, max]
+ * </p>
+ * @author Evan RIBOULEAU
+ */
 public class Domain {
 
 	private int min;
 	private int max;
 	private boolean[] presence;
+
 	/**
-	 * 
+	 * Constructor for Domain class
 	 * @param min minimum value
 	 * @param max maximum value
 	 */
@@ -25,9 +34,8 @@ public class Domain {
     }
 
 	/**
-	 * 
-	 * @param value
 	 * This method remove an integer to the domain
+	 * @param value integer to remove
 	 */
 	public void removeValue(int value) {
 		if (value >= this.min && value <= this.max) {
@@ -36,9 +44,9 @@ public class Domain {
 	}
 
 	/**
-	 * 
-	 * @param value
 	 * This method watch if an integer is in the domain
+	 * @param value integer tested
+	 * @return boolean
 	 */
 	public boolean contains(int value) {
         if (value < min || value > max) {

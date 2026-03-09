@@ -1,17 +1,25 @@
 package up.csp;
 
+/**
+ * Represents a CSP variable identified by a unique name.
+ * <p>
+ * A variable holds a reference to a {@link Domain} containing its possible values
+ * and maintains its current assignment status. In this solver, assigned values
+ * are handled as primitive integers
+ * </p>
+ * @author Nicolas ITEY
+ */
 public class Variable {
 
-    private String name; // Unique name for the Variable
-    private Domain domain; // The domain must be enumerable,so it must be a sequence 
-    private Integer value; // must be null if unassigned. this is the assigned value you are trying to find    
+    private String name;
+    private Domain domain;
+    private Integer value;
 
     /**
-     * @author Nicolas ITEY This is the constructor for the Variable class
-     * @param name
-     * @param domain
-     * @param value
-     * Constructor of the class Variable 
+     * Constructor for the Variable class
+     * @param name unique name for the Variable
+     * @param domain the domain must be enumerable,so it must be a sequence
+     * @param value must be null if unassigned. this is the assigned value you are trying to find
      */
     public Variable(String name, Domain domain) {
         this.name = name;
@@ -20,19 +28,17 @@ public class Variable {
     }
 
     /**
-     * @author Nicolas ITEY
-     * @return  a boolean 
-     * The function verify if the value has been assigned or not,return true if it has and false if it hasn't.
+     * Verify if the value has been assigned or not, return true if it has and false if it hasn't
+     * @return boolean
      */
     public boolean isAssigned() {
         return value != null;
     }
 
     /**
-     * @author Nicolas ITEY
+     * Assign the value searched to the Variable
      * @param value the value of the Variable 
      * @throws IllegalArgumentException if the parameter is invalid
-     * the function will assign the value searched to the Variable.
      */
     public void assign(int value) {
         if (!domain.contains(value)) {
@@ -44,8 +50,7 @@ public class Variable {
     }
 
     /**
-     * @author Nicolas ITEY
-     * this function will unassign the value of the Variable and turn it into null
+     * Unassign the value of the Variable and turn it into null
      */
     public void unassign() {
         if (isAssigned()) {
@@ -54,7 +59,6 @@ public class Variable {
     }
 
     /**
-     * @author Nicolas ITEY 
      * Get the name
      */
     public String getName() {
@@ -63,7 +67,6 @@ public class Variable {
     }
 
     /**
-     * @author Nicolas ITEY
      * Get the domain
      */
     public Domain getDomain() {
@@ -72,7 +75,6 @@ public class Variable {
     }
 
     /**
-     * @author Nicolas ITEY
      * Get the Value
      */
     public Integer getValue() {
