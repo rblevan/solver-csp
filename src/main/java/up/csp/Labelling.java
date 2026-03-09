@@ -5,6 +5,12 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Random;
 
+/**
+ * Heuristics helper for CSP variable selection and value ordering.
+ * <p>
+ * Strategy constants define how the solver picks the next variable and
+ * in which order domain values are attempted.
+ */
 public class Labelling 
 {
 	public static final int VAR_FIRST_UNASSIGNED = 0;
@@ -19,6 +25,12 @@ public class Labelling
 
 	private final Random random = new Random();
 
+	/**
+	 * Sets the variable selection strategy.
+	 *
+	 * @param strategy 
+	 * @throws IllegalArgumentException if the strategy is unknown
+	 */
 	public void setVarStrategy(int strategy) 
 	{
 		switch (strategy) {
@@ -32,6 +44,12 @@ public class Labelling
 		}
 	}
 
+	/**
+	 * Sets the value ordering strategy.
+	 *
+	 * @param strategy 
+	 * @throws IllegalArgumentException if the strategy is unknown
+	 */
 	public void setValStrategy(int strategy)
 	{	switch (strategy) {
 			case VAL_IN_ORDER:
@@ -43,12 +61,17 @@ public class Labelling
 		}
 	}
 
+	/**
+	 * Selects the next variable to assign according to the configured strategy.
+	 *
+	 * @param csp CSP instance containing variables
+	 * @return selected unassigned variable, or null if none is available or if csp is null
+	 */
 	public Variable selectVariable(CSP csp) 
 	{
 		if (csp == null) {
 			return null;
 		}
-
 		List<Variable> v_unassigned =new ArrayList<>();
 		for (Variable variable : csp.getVariables()) {
 			if (!variable.isAssigned()) 
@@ -78,6 +101,15 @@ public class Labelling
 		return v_unassigned.get(0);
 	}
 
+	/**
+	 * Selects the next value to try for a variable.
+	 *
+	 * This method returns the first value of orderValues(Variable)}.
+	 *
+	 * @param variable to label
+	 * @return next value to try
+	 * @throws IllegalStateException if no value is currently available
+	 */
   	public int selectValue(Variable variable)
 	{
 		List<Integer> values = orderValues(variable);
@@ -88,24 +120,25 @@ public class Labelling
 	}
 
 
+	/**
+	 * Builds and orders the list of currently available values from a variable domain.
+	 * The list is ordered according to the configured value ordering strategy.
+	 * @param variable whose domain values are requested
+	 * @return list of available values; empty list if variable or its domain is null
+	 */
 	public List<Integer> orderValues(Variable variable)
 	{
 		List<Integer> availableValues = new ArrayList<>();
 		if (variable == null || variable.getDomain() == null) {
-			return availableValues;
-		}
+			return availableValues;	}
 		Domain domain = variable.getDomain();
 		for (int value =domain.getMin(); value <= domain.getMax(); value++) {
 			if (domain.contains(value)) {
-				availableValues.add(value);
-			}
+				availableValues.add(value);	}
 		}
-
-		if (valStrategy == VAL_RANDOM) {
+		if (valStrategy== VAL_RANDOM) {
 			Collections.shuffle(availableValues, random);
 		}
-
 		return availableValues;
 	}
-
 }
