@@ -5,6 +5,15 @@ import java.util.List;
 
 import up.csp.constraint.Constraint;
 
+/**
+ * Orchestrates the Constraint Satisfaction Problem (CSP) model and its resolution.
+ * <p>
+ * This class maintains the collection of variables and constraints that define the problem.
+ * It implements the Backtracking search algorithm combined with Forward-Checking
+ * propagation to find valid assignments.
+ * </p>
+ * @author Vanyla MAIKOOUVA
+ */
 public class CSP {
 
 	private final ArrayList<Variable> variables;
@@ -61,7 +70,7 @@ public class CSP {
 	/**
 	 * Sets variable selection strategy used by labelling.
 	 *
-	 * @param strategy 
+	 * @param strategy
 	 */
 	public void setVarStrategy(int strategy)
 	{

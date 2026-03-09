@@ -29,7 +29,7 @@ public class Variable {
 
     /**
      * Verify if the value has been assigned or not, return true if it has and false if it hasn't
-     * @return boolean
+     * @return boolean true if the value has been assigned, false otherwise
      */
     public boolean isAssigned() {
         return value != null;
@@ -60,6 +60,7 @@ public class Variable {
 
     /**
      * Get the name
+     * @return the name of the Variable
      */
     public String getName() {
 
@@ -68,6 +69,7 @@ public class Variable {
 
     /**
      * Get the domain
+     * @return the domain of the Variable
      */
     public Domain getDomain() {
 
@@ -76,6 +78,7 @@ public class Variable {
 
     /**
      * Get the Value
+     * @return the value of the Variable
      */
     public Integer getValue() {
 

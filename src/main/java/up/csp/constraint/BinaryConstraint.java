@@ -2,6 +2,10 @@ package up.csp.constraint;
 
 import up.csp.Variable;
 
+/**
+ * Implementation of BinaryConstraint constraint
+ * @author Chloé Lemaire
+ */
 public class BinaryConstraint extends Constraint{
     private final Variable varA ;
     private final Variable varB ;

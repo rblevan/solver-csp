@@ -5,11 +5,16 @@ import java.util.List;
 import java.util.Objects;
 
 import up.csp.Variable;
+
+/**
+ * Implementation of Alldifferents constraint
+ * @author Chloé Lemaire
+ */
 public class AllDifferent {
     private final List<Variable> variables;
     
-    /**@author Chloé Lemaire
-    @param differentVariables list of variables that needs to be different
+    /**
+    * @param differentVariables list of variables that needs to be different
     */
     protected AllDifferent(List<Variable> differentVariables){
         variables=differentVariables;

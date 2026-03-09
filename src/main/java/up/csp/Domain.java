@@ -34,7 +34,7 @@ public class Domain {
     }
 
 	/**
-	 * This method remove an integer to the domain
+	 * Remove an integer to the domain
 	 * @param value integer to remove
 	 */
 	public void removeValue(int value) {
@@ -44,9 +44,8 @@ public class Domain {
 	}
 
 	/**
-	 *
-	 * @param value
-	 * This method restore an integer to the domain.
+	 *  Restore an integer to the domain
+	 * @param value integer to restore
 	 * */
 	public void restoreValue(int value) {
 		if (value >= this.min && value <= this.max) {
@@ -67,8 +66,8 @@ public class Domain {
 	}
 
 	/**
-	 *
-	 * This method return the size of the domain.
+	 * Return the size of the domain
+     * @return int size of the domain
 	 * */
 
 	public int size() {
@@ -82,9 +81,8 @@ public class Domain {
 	}
 
 	/**
-	 *
-	 * @param d Second domain
-	 * This method modifies the current domain to keep only the values present in both domains.
+	 * Modifies the current domain to keep only the values present in both domains
+	 * @param d Second domain to compare
 	 * */
 	public void intersection(Domain d) {
 		for (int i = 0; i < this.presence.length; i++) {

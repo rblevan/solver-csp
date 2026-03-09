@@ -3,6 +3,11 @@ package up.csp.constraint;
 import java.util.ArrayList;
 
 import up.csp.Variable;
+
+/**
+ * Implementation of Constraint
+ * @author Chloé Lemaire
+ */
 public abstract class Constraint {
 
 

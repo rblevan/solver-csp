@@ -10,6 +10,8 @@ import java.util.Random;
  * <p>
  * Strategy constants define how the solver picks the next variable and
  * in which order domain values are attempted.
+ * </p>
+ * @author Chloé LEMAIRE
  */
 public class Labelling 
 {
