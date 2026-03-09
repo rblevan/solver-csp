@@ -19,12 +19,10 @@ public class Variable {
      * Constructor for the Variable class
      * @param name unique name for the Variable
      * @param domain the domain must be enumerable,so it must be a sequence
-     * @param value must be null if unassigned. this is the assigned value you are trying to find
      */
     public Variable(String name, Domain domain) {
         this.name = name;
         this.domain = domain;
-
     }
 
     /**
@@ -39,11 +37,12 @@ public class Variable {
      * Assign the value searched to the Variable
      * @param value the value of the Variable 
      * @throws IllegalArgumentException if the parameter is invalid
+     * the function will assign the value searched to the Variable.
      */
     public void assign(int value) {
         if (!domain.contains(value)) {
             throw new IllegalArgumentException(
-                    "Value " + value +" of variable "+ name+" not in domain "+domain
+                    "Value " + value + " not in domain"
             );
         }
         this.value = value;

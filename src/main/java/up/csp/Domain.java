@@ -14,7 +14,7 @@ public class Domain {
 
 	private int min;
 	private int max;
-	private final boolean[] presence;
+	private boolean[] presence;
 
 	/**
 	 * Constructor for Domain class
@@ -45,8 +45,13 @@ public class Domain {
 	}
 
 	/**
+<<<<<<< HEAD
 	 *  Restore an integer to the domain
 	 * @param value integer to restore
+=======
+	 * @param value
+	 * This method restore an integer to the domain.
+>>>>>>> 9424030 (Update : doc BackTrack, Domain and Variable)
 	 * */
 	public void restoreValue(int value) {
 		if (value >= this.min && value <= this.max) {
@@ -107,7 +112,7 @@ public class Domain {
 		return d;
     }
 
-		
+
 
 	public int getMin() {
 		return this.min;
