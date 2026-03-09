@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.Objects;
 
 import up.csp.Variable;
-public class AllDifferent {
+public class AllDifferent extends Constraint {
     private final List<Variable> variables;
     
     /**@author Chloé Lemaire
@@ -15,6 +15,7 @@ public class AllDifferent {
         variables=differentVariables;
     }
 
+    @Override
     public boolean check(){
         boolean isDifferent = true;
         for(int i=0;i<variables.size()-1 && isDifferent;i++){
@@ -23,5 +24,10 @@ public class AllDifferent {
             }
         }
         return isDifferent;
+    }
+
+    @Override
+    public void set(){
+        
     }
 }

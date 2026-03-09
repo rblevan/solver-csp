@@ -7,6 +7,7 @@ public abstract class Constraint {
 
 
 	public abstract boolean check();
+	public abstract void set();
 
 	/** @author Chloé lemaire
 	 * @param var la variable à vérifier l'égalité
