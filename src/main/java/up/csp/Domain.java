@@ -55,9 +55,9 @@ public class Domain {
 	}
 
 	/**
-	 * 
-	 * @param value
-	 * This method watch if an integer is in the domain.
+	 * This method watch if an integer is in the domain
+	 * @param value integer tested
+	 * @return boolean
 	 */
 	public boolean contains(int value) {
         if (value < min || value > max) {
