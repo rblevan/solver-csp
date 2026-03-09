@@ -35,22 +35,40 @@ public class BinaryConstraint extends Constraint{
         boolean res = false;
         switch (mode){
             case 'e' -> {
-                    if(varA.isAssigned() &&varB.isAssigned()){
-                        res= varA.getValue()== varB.getValue()+constant;
+                    for(int i=varA.getDomain().getMin();i<varA.getDomain().getMax();i++){
+                        if(varA.getDomain().contains(i)!=varB.getDomain().contains(i)){
+                            return false;
+                        }
+                        
                     }
+                    return true;
                 }
             case 'd' -> {
-                    if(varA.isAssigned() &&varB.isAssigned()){
-                        res= varA.getValue()!=varB.getValue()+constant;
+                    for(int i=varA.getDomain().getMin();i<varA.getDomain().getMax();i++){
+                        if(varA.getDomain().contains(i)==varB.getDomain().contains(i+constant)){
+                            return false;
+                        }
                     }
+                    return true;
                 }
             case 'u' -> {
-                    if(varA.isAssigned() &&varB.isAssigned()){
-                        res= varA.getValue()<varB.getValue()+constant;
+                    for(int i=varB.getDomain().getMin();i<varA.getDomain().getMax();i++){
+                        if(varA.getDomain().contains(i)){
+                            return false;
+                        }
                     }
                 }
         }
         return res;
+    }
+
+    @Override 
+    public void set(){
+        switch(mode){
+            case 'e' ->{}
+            case 'd' ->{}
+            case 'u' ->{}
+        }
     }
 
 }

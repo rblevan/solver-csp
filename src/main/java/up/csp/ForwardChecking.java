@@ -1,21 +1,22 @@
 package up.csp;
 
-import java.util.List;
-//mettre dans la doc fait par  chloe et nicolas
+import up.csp.constraint.Constraint;
+
 public class ForwardChecking {
 // manque le fait de l'utiliser dans le constraint 
-    private List<Variable> variable;
+    private CSP csp;
 
-    public ForwardChecking(List<Variable> variable) {
-        this.variable = variable;
+    public ForwardChecking(CSP csp) {
+        this.csp = csp;
 
     }
 //check pour chaque value de variable si elle fait partie du domain,si oui  alors on la supp de domain,si domaine vide on backtrack
     public boolean forwardCheck(Variable var) {
         int value = var.getValue();
 
-        for (Variable thevar : variable) {
-            
+        for (Constraint constraint : csp.getConstraints()) {
+            return false;
+        }/* 
             if (!thevar.isAssigned() && thevar != var) {
                 
                 Domain domain = thevar.getDomain();
@@ -30,8 +31,7 @@ public class ForwardChecking {
                     return false; // backtracking ? 
                 }
 
-            }
-        }
+            }*/
         return true;
 
     }

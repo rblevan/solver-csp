@@ -27,13 +27,26 @@ public class UnaryConstraint extends Constraint{
     public boolean check(){
         if(equals){
             if(var.isAssigned()){
-                return var.getValue()==value;
+                return var.getDomain().contains(value);
             }
         }else{
             if(var.isAssigned()){
-                return var.getValue()!=value;
+                return !var.getDomain().contains(value);
             }
         }
         return false;
+    }
+
+    @Override
+    public void set(){
+        if(equals){
+            if (var.getDomain().contains(value)){
+                var.assign(value);
+            }
+        }else{
+            if(var.getDomain().contains(value)){
+                var.getDomain().removeValue(value);
+            }
+        }
     }
 }

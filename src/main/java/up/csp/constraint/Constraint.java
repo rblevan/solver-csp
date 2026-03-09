@@ -12,6 +12,7 @@ public abstract class Constraint {
 
 
 	public abstract boolean check();
+	public abstract void set();
 
 	/** @author Chloé lemaire
 	 * @param var variable which we want to be equal
