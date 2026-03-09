@@ -1,15 +1,13 @@
 package up.csp;
 
 import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Collections;
 import java.util.List;
 
 import up.csp.constraint.Constraint;
 
 public class CSP {
 
-	private final ArrayList<Variable> variables; 
+	private final ArrayList<Variable> variables;
 	private final ArrayList<Constraint> constraints;
 	private final Labelling labelling;
 
@@ -20,45 +18,72 @@ public class CSP {
 		labelling = new Labelling();
 	}
 
-	/* 
-	 *	@param v the variable to be added to the CSP
+	/**
+	 * Adds a variable to this CSP.
+	 *
+	 * @param v variable to add
 	 */
-	public void addVariable(Variable v) 
+	public void addVariable(Variable v)
 	{
 		variables.add(v);
 	}
-	/* 
-	 * @param c the constraint to be added to the CSP
+
+	/**
+	 * Adds a constraint to this CSP.
+	 *
+	 * @param c constraint to add
 	 */
-	public void addConstraint(Constraint c) 
+	public void addConstraint(Constraint c)
 	{
 		constraints.add(c);
 	}
 
+	/**
+	 * Returns a copy of variables.
+	 *
+	 * @return modifiable copy of current variables
+	 */
 	public ArrayList<Variable> getVariables()
 	{
 		return new ArrayList<>(variables);
 	}
 
-	public Collection<Constraint> getConstraints()
+	/**
+	 * Returns constraints as an unmodifiable collection.
+	 *
+	 * @return an array list of constraints 
+	 */
+	public ArrayList<Constraint> getConstraints()
 	{
-		return Collections.unmodifiableCollection(constraints);
+		return new ArrayList<>(constraints);
 	}
 
+	/**
+	 * Sets variable selection strategy used by labelling.
+	 *
+	 * @param strategy 
+	 */
 	public void setVarStrategy(int strategy)
 	{
 		labelling.setVarStrategy(strategy);
 	}
 
+	/**
+	 * Sets value ordering strategy used by labelling.
+	 *
+	 * @param strategy 
+	 */
 	public void setValStrategy(int strategy)
 	{
 		labelling.setValStrategy(strategy);
 	}
 
-	/*
-	 * @return true if all variables in the CSP are assigned, false otherwise.
+	/**
+	 * Checks whether all variables in the CSP are assigned.
+	 *
+	 * @return true if all variables are assigned, otherwise false
 	 */
-	public boolean isComplete() 
+	public boolean isComplete()
 	{
 		for (Variable v : variables) {
 			if (!v.isAssigned()) {
@@ -68,11 +93,12 @@ public class CSP {
 		return true;
 	}
 
-	/*
-	 * @return true if all constraints in the CSP are satisfied, false otherwise.
+	/**
+	 * Checks whether every constraint is satisfied.
+	 *
+	 * @return true if all constraints are satisfied, otherwise false
 	 */
-	
-	public boolean isSatisfied() 
+	public boolean isSatisfied()
 	{
 		for (Constraint c : constraints) {
 			if (!c.check()) {
@@ -82,7 +108,15 @@ public class CSP {
 		return true;
 	}
 
-
+	/**
+	 * Solves the CSP with recursive backtracking.
+	 * 
+	 * This method does not perform forward checking; it assigns values,
+     * checks constraints only when a complete assignment is reached, and backtracks if the assignment 
+     * does not satisfy all constraints.
+	 * @return true if a complete satisfying assignment is found, otherwise false
+	 */
+    
 	public boolean solve()
 	{
 		if (isComplete()) {
@@ -103,6 +137,7 @@ public class CSP {
 				}
 				return false;
 			}
-		}	}
-
+		}
 	}
+
+}
