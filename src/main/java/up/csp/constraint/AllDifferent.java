@@ -1,20 +1,21 @@
 package up.csp.constraint;
 
 
-import java.util.List;
+import java.util.ArrayList;
 import java.util.Objects;
 
 import up.csp.Variable;
-public class AllDifferent {
-    private final List<Variable> variables;
+public class AllDifferent extends Constraint {
+    private final ArrayList<Variable> variables;
     
     /**@author Chloé Lemaire
     @param differentVariables list of variables that needs to be different
     */
-    protected AllDifferent(List<Variable> differentVariables){
+    protected AllDifferent(ArrayList<Variable> differentVariables){
         variables=differentVariables;
     }
 
+    @Override
     public boolean check(){
         boolean isDifferent = true;
         for(int i=0;i<variables.size()-1 && isDifferent;i++){
@@ -23,5 +24,20 @@ public class AllDifferent {
             }
         }
         return isDifferent;
+    }
+
+    @Override
+    public void set(){
+        for (Variable v : variables){
+            if(v.isAssigned()){
+                int assignedValue = v.getValue();
+                for(Variable rest : variables){
+                    if(rest!=v && rest.getDomain().contains(assignedValue)){
+                        rest.getDomain().removeValue(assignedValue);
+                    }
+                }
+            }
+        }
+
     }
 }
