@@ -44,9 +44,20 @@ public class Domain {
 	}
 
 	/**
-	 * This method watch if an integer is in the domain
-	 * @param value integer tested
-	 * @return boolean
+	 *
+	 * @param value
+	 * This method restore an integer to the domain.
+	 * */
+	public void restoreValue(int value) {
+		if (value >= this.min && value <= this.max) {
+			this.presence[value - this.min] = true;
+		}
+	}
+
+	/**
+	 * 
+	 * @param value
+	 * This method watch if an integer is in the domain.
 	 */
 	public boolean contains(int value) {
         if (value < min || value > max) {
@@ -54,6 +65,11 @@ public class Domain {
         }
         return this.presence[value - this.min];
 	}
+
+	/**
+	 *
+	 * This method return the size of the domain.
+	 * */
 
 	public int size() {
         int count = 0;
@@ -65,6 +81,21 @@ public class Domain {
         return count;
 	}
 
+	/**
+	 *
+	 * @param d Second domain
+	 * This method modifies the current domain to keep only the values present in both domains.
+	 * */
+	public void intersection(Domain d) {
+		for (int i = 0; i < this.presence.length; i++) {
+			if (this.presence[i]) {
+				int val = this.min + i;
+				if (!d.contains(val)) {
+					this.presence[i] = false;
+				}
+			}
+		}
+	}
 
 	public int getMin() {
 		return this.min;
