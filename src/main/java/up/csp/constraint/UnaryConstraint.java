@@ -27,7 +27,7 @@ public class UnaryConstraint extends Constraint{
     public boolean check(){
         if(equals){
             if(var.isAssigned()){
-                return var.getDomain().contains(value);
+                return var.getDomain().contains(value) || (var.isAssigned() && var.getValue()==value);
             }
         }else{
             if(var.isAssigned()){
@@ -41,6 +41,11 @@ public class UnaryConstraint extends Constraint{
     public void set(){
         if(equals){
             if (var.getDomain().contains(value)){
+                for(int i=var.getDomain().getMin();i<=var.getDomain().getMax();i++){
+                    if (i!=value){
+                        var.getDomain().removeValue(i);
+                    }
+                }
                 var.assign(value);
             }
         }else{

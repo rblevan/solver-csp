@@ -35,6 +35,9 @@ public class BinaryConstraint extends Constraint{
         boolean res = false;
         switch (mode){
             case 'e' -> {
+                    if(varA.isAssigned() && varB.isAssigned()){
+                        return varA.getValue()==varB.getValue();
+                    }
                     for(int i=varA.getDomain().getMin();i<varA.getDomain().getMax();i++){
                         if(varA.getDomain().contains(i)!=varB.getDomain().contains(i)){
                             return false;
@@ -44,19 +47,37 @@ public class BinaryConstraint extends Constraint{
                     return true;
                 }
             case 'd' -> {
+                    if(varA.isAssigned() && varB.isAssigned()){
+                        return varA.getValue()!=varB.getValue()+constant;
+                    }
+                    int countSame = 0;
                     for(int i=varA.getDomain().getMin();i<varA.getDomain().getMax();i++){
-                        if(varA.getDomain().contains(i)==varB.getDomain().contains(i+constant)){
-                            return false;
+                        if(varA.getDomain().contains(i)==varB.getDomain().contains(i+constant) && (varA.getDomain().contains(i) || varB.getDomain().contains(i+constant))){
+                            countSame++;
                         }
                     }
-                    return true;
+                    return countSame!=1;
                 }
-            case 'u' -> {
-                    for(int i=varB.getDomain().getMin();i<varA.getDomain().getMax();i++){
-                        if(varA.getDomain().contains(i)){
-                            return false;
+            case 'u' -> { //A<B+i
+                    if(varA.isAssigned() && varB.isAssigned()){
+                        return varA.getValue()<varB.getValue()+constant;
+                    }
+                    else if(varA.isAssigned()){
+                        for(int i=varB.getDomain().getMin();i<varA.getValue()-constant;i++){
+                            if (varB.getDomain().contains(i-constant)){
+                                return false;
+                            }
                         }
                     }
+                    else if(varB.isAssigned()){
+                        for(int i = varA.getDomain().getMax();i>=varB.getValue()+constant;i--){
+                            if(varA.getDomain().contains(i)){
+                                return false;
+                            }
+                        }
+                    }
+
+                    return true;
                 }
         }
         return res;
@@ -65,7 +86,7 @@ public class BinaryConstraint extends Constraint{
     @Override 
     public void set(){
         switch(mode){
-            case 'e' ->{varA.getDomain().intersection(varB.getDomain());}
+            case 'e' ->{varA.getDomain().intersection(varB.getDomain());varB.getDomain().intersection(varA.getDomain());}
             case 'd' ->{if(varA.isAssigned()){
                             varB.getDomain().removeValue(varA.getValue()-constant);
                         }
