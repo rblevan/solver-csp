@@ -1,4 +1,4 @@
-package up.csp.constraint;
+package up.csp;
 
 import java.util.ArrayList;
 
@@ -6,8 +6,7 @@ import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 import org.junit.Test;
 
-import up.csp.Domain;
-import up.csp.Variable;
+import up.csp.constraint.Constraint;
 
 public class TestConstraint{
 
@@ -29,7 +28,7 @@ public class TestConstraint{
         Variable a = new Variable("a",new Domain(0,20));
         Variable b = new Variable("b", new Domain(0,20));
         int constant = 0;
-        Constraint equals = Constraint.equal(a,b,constant);
+        Constraint equals = Constraint.equal(a,b);
         Constraint different = Constraint.different(a,b, constant);
         Constraint under = Constraint.under(a,b,constant);
 
@@ -51,20 +50,18 @@ public class TestConstraint{
         assertFalse(under.check());
 
         constant = 3;
-        equals = Constraint.equal(a,b,constant);
         different = Constraint.different(a,b, constant);
         under = Constraint.under(a,b,constant);
         
-        assertFalse(equals.check());
+        assertTrue(equals.check());
         assertTrue(different.check());
         assertTrue(under.check());
 
         constant = -3;
         different = Constraint.different(a,b, constant);
         under = Constraint.under(a,b,constant);
-        equals = Constraint.equal(a,b,constant);
 
-        assertFalse(equals.check());
+        assertTrue(equals.check());
         assertTrue(different.check());
         assertFalse(under.check());
     }   
@@ -77,7 +74,7 @@ public class TestConstraint{
             vars.add(v);
             v.assign(i);
         }
-        AllDifferent diff = Constraint.allDifferent(vars);
+        Constraint diff = Constraint.allDifferent(vars);
         assertTrue(diff.check());
         vars.get(9).assign(1);
         assertFalse(diff.check());

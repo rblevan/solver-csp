@@ -39,6 +39,14 @@ public class CSP {
 	}
 
 	/**
+	 * loops through all constraints and sets variables according to them
+	 */
+	public void forwardCheck() {
+        for (Constraint constraint : constraints) {
+            constraint.set();
+        }
+    }
+	/**
 	 * Returns a copy of variables.
 	 *
 	 * @return modifiable copy of current variables
@@ -148,10 +156,24 @@ public class CSP {
 			} else {
 				List<Integer> values = labelling.orderValues(variable);
 				for (int value : values) {
+					ArrayList<Domain> temp = new ArrayList<>();
+					for(Variable v : variables){
+						temp.add(v.getDomain().copy());
+					}
+					if(!variable.getDomain().contains(value)){
+						continue;
+					}
 					variable.assign(value);
+					forwardCheck();
 					if (solve()) {
 						return true;
 					} else {
+						for(int i=0;i<temp.size();i++){
+							Variable v = variables.get(i);
+							Domain newDomain = temp.get(i);
+							v.setDomain(newDomain);
+						}
+						variable.getDomain().removeValue(value);
 						variable.unassign();
 					}
 				}
