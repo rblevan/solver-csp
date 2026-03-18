@@ -51,6 +51,7 @@ public class UnaryConstraint extends Constraint{
         }else{
             if(var.getDomain().contains(value)){
                 var.getDomain().removeValue(value);
+                var.unassign();
             }
         }
     }

@@ -11,7 +11,7 @@ import java.util.Random;
  * Strategy constants define how the solver picks the next variable and
  * in which order domain values are attempted.
  * </p>
- * @author Chloé LEMAIRE
+ * @author Vanyla MAIKOOUVA
  */
 public class Labelling 
 {
