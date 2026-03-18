@@ -68,7 +68,7 @@ public class BinaryConstraint extends Constraint{
                         return varA.getValue()<varB.getValue()+constant;
                     }
                     else if(varA.isAssigned()){
-                        for(int i=varA.getValue()-constant+1;i<varB.getDomain().getMax();i++){
+                        for(int i=varA.getValue()-constant+1;i<=varB.getDomain().getMax();i++){
                             if (varB.getDomain().contains(i)){
                                 return true;
                             }
@@ -81,7 +81,7 @@ public class BinaryConstraint extends Constraint{
                             }
                         }
                     }else{
-                        return !(varB.getDomain().getMax()+constant<=varA.getDomain().getMin()); //tmp
+                        return !(varB.getDomain().getMax()+constant<=varA.getDomain().getMin()); 
                     }
 
                     return false;
