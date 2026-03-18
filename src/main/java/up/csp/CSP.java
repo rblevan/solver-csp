@@ -5,6 +5,16 @@ import java.util.List;
 
 import up.csp.constraint.Constraint;
 
+/**
+ * Orchestrates the Constraint Satisfaction Problem (CSP) model and its resolution.
+ * <p>
+ * This class maintains the collection of variables and constraints that define the problem.
+ * It implements the Backtracking search algorithm combined with Forward-Checking
+ * propagation to find valid assignments.
+ * </p>
+ * @authors Vanyla MAIKOOUVA
+ * @authors Chloé LEMAIRE
+ */
 public class CSP {
 
 	private final ArrayList<Variable> variables;
@@ -19,7 +29,7 @@ public class CSP {
 	}
 
 	/**
-	 * Adds a variable to this CSP.
+	 * Adds a {@link Variable} to this CSP.
 	 *
 	 * @param v variable to add
 	 */
@@ -29,7 +39,7 @@ public class CSP {
 	}
 
 	/**
-	 * Adds a constraint to this CSP.
+	 * Adds a {@link Constraint} to this CSP.
 	 *
 	 * @param c constraint to add
 	 */
@@ -49,7 +59,7 @@ public class CSP {
 	/**
 	 * Returns a copy of variables.
 	 *
-	 * @return modifiable copy of current variables
+	 * @return {@code ArrayList<Variable>} modifiable copy of current variables
 	 */
 	public ArrayList<Variable> getVariables()
 	{
@@ -59,7 +69,7 @@ public class CSP {
 	/**
 	 * Returns constraints as an unmodifiable collection.
 	 *
-	 * @return an array list of constraints 
+	 * @return {@code ArrayList<Constraint>} an array list of constraints
 	 */
 	public ArrayList<Constraint> getConstraints()
 	{
@@ -69,7 +79,7 @@ public class CSP {
 	/**
 	 * Sets variable selection strategy used by labelling.
 	 *
-	 * @param strategy 
+	 * @param strategy from {@link Labelling}
 	 */
 	public void setVarStrategy(int strategy)
 	{
@@ -79,7 +89,7 @@ public class CSP {
 	/**
 	 * Sets value ordering strategy used by labelling.
 	 *
-	 * @param strategy 
+	 * @param strategy from {@link Labelling}
 	 */
 	public void setValStrategy(int strategy)
 	{
@@ -89,7 +99,7 @@ public class CSP {
 	/**
 	 * Checks whether all variables in the CSP are assigned.
 	 *
-	 * @return true if all variables are assigned, otherwise false
+	 * @return {@code true} if all variables are assigned, otherwise {@code false}
 	 */
 	public boolean isComplete()
 	{
@@ -104,7 +114,7 @@ public class CSP {
 	/**
 	 * Checks whether every constraint is satisfied.
 	 *
-	 * @return true if all constraints are satisfied, otherwise false
+	 * @return {@code true} if all constraints are satisfied, otherwise {@code false}
 	 */
 	public boolean isSatisfied()
 	{
@@ -122,7 +132,7 @@ public class CSP {
 	 * This method does not perform forward checking; it assigns values,
      * checks constraints only when a complete assignment is reached, and backtracks if the assignment 
      * does not satisfy all constraints.
-	 * @return true if a complete satisfying assignment is found, otherwise false
+	 * @return {@code true} if a complete satisfying assignment is found, otherwise {@code false}
 	 */
     
 	public boolean solve()
