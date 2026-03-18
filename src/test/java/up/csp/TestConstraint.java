@@ -8,6 +8,10 @@ import org.junit.Test;
 
 import up.csp.constraint.Constraint;
 
+/**
+ * Test all the constraints classes
+ * @author Chloé LEMAIRE
+ */
 public class TestConstraint{
 
     @Test

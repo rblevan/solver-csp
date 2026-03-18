@@ -6,6 +6,10 @@ import org.junit.Test;
 
 import up.csp.constraint.Constraint;
 
+/**
+ * Test the {@link CSP} class
+ * @author Chloé LEMAIRE
+ */
 public class TestCSP {
 
     @Test

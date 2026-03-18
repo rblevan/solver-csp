@@ -5,7 +5,7 @@ import java.util.Arrays;
 /**
  * Represents the set of possible values for a {@link Variable}.
  * <p>
- * This class implements a domain using a boolean array to track the presence
+ * This class implements a {@link Domain} using a boolean array to track the presence
  * of values within a specific range [min, max]
  * </p>
  * @author Evan RIBOULEAU
@@ -14,10 +14,10 @@ public class Domain {
 
 	private int min;
 	private int max;
-	private final boolean[] presence;
+	private boolean[] presence;
 
 	/**
-	 * Constructor for Domain class
+	 * Constructor for {@link Domain} class
 	 * @param min minimum value
 	 * @param max maximum value
 	 */
@@ -35,7 +35,7 @@ public class Domain {
     }
 
 	/**
-	 * This method remove an integer to the domain
+	 * Remove an integer to the {@link Domain}
 	 * @param value integer to remove
 	 */
 	public void removeValue(int value) {
@@ -45,9 +45,8 @@ public class Domain {
 	}
 
 	/**
-	 *
-	 * @param value
-	 * This method restore an integer to the domain.
+	 * Restore an integer to the {@link Domain}
+	 * @param value integer to restore
 	 * */
 	public void restoreValue(int value) {
 		if (value >= this.min && value <= this.max) {
@@ -56,9 +55,9 @@ public class Domain {
 	}
 
 	/**
-	 * This method watch if an integer is in the domain
+	 * This method watch if an integer is in the {@link Domain}
 	 * @param value integer tested
-	 * @return boolean
+	 * @return {@code boolean}
 	 */
 	public boolean contains(int value) {
         if (value < min || value > max) {
@@ -68,8 +67,8 @@ public class Domain {
 	}
 
 	/**
-	 *
-	 * This method return the size of the domain.
+	 * Return the size of the domain
+     * @return {@code int} size of the domain
 	 * */
 
 	public int size() {
@@ -83,9 +82,8 @@ public class Domain {
 	}
 
 	/**
-	 *
-	 * @param d Second domain
-	 * This method modifies the current domain to keep only the values present in both domains.
+	 * Modifies the current {@link Domain} to keep only the values present in both domains
+	 * @param d Second {@link Domain} to compare
 	 * */
 	public void intersection(Domain d) {
 		for (int i = 0; i < this.presence.length; i++) {
@@ -99,12 +97,11 @@ public class Domain {
 		}
 	}
 
-	/**
-	 *
-	 * This method copy the current domain.
-	 * @return Domain
-	 * @author Chloé Lemaire
-	 * */
+    /**
+     * This method copy the current {@link Domain}
+     * @return {@link Domain} copied
+     * @author Chloé LEMAIRE
+     */
     protected Domain copy() {
         Domain d =new Domain(min, max);
 		for(int i=0;i<min-max+1;i++){
@@ -115,6 +112,8 @@ public class Domain {
 		return d;
     }
 
+
+
 	public int getMin() {
 		return this.min;
 	}
@@ -123,11 +122,6 @@ public class Domain {
 		return this.max;
 	}
 
-	/**
-	 * This method rewrite toString method for Domain.
-	 * @return String
-	 * @author Chloé Lemaire
-	 * */
 	@Override
 	public String toString() {
 		String res = "";
