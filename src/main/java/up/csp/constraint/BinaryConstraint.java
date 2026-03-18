@@ -38,25 +38,30 @@ public class BinaryConstraint extends Constraint{
                     if(varA.isAssigned() && varB.isAssigned()){
                         return varA.getValue()==varB.getValue();
                     }
-                    for(int i=varA.getDomain().getMin();i<varA.getDomain().getMax();i++){
-                        if(varA.getDomain().contains(i)!=varB.getDomain().contains(i)){
-                            return false;
+                    int min = varA.getDomain().getMin()<varB.getDomain().getMin()? varA.getDomain().getMin() : varB.getDomain().getMin();
+                    int max= varA.getDomain().getMax()>varB.getDomain().getMax()? varA.getDomain().getMax() : varB.getDomain().getMax();
+                    for(int i=min;i<max;i++){
+                        if(varA.getDomain().contains(i) && varB.getDomain().contains(i)){
+                            return true;
                         }
                         
                     }
-                    return true;
+                    return false;
                 }
             case 'd' -> {
                     if(varA.isAssigned() && varB.isAssigned()){
                         return varA.getValue()!=varB.getValue()+constant;
                     }
-                    int countSame = 0;
-                    for(int i=varA.getDomain().getMin();i<varA.getDomain().getMax();i++){
+                    int min = varA.getDomain().getMin()<varB.getDomain().getMin()? varA.getDomain().getMin() : varB.getDomain().getMin();
+                    int max= varA.getDomain().getMax()>varB.getDomain().getMax()? varA.getDomain().getMax() : varB.getDomain().getMax();
+                    int countSame = 0; 
+                    for(int i=min;i<max;i++){
                         if(varA.getDomain().contains(i)==varB.getDomain().contains(i+constant) && (varA.getDomain().contains(i) || varB.getDomain().contains(i+constant))){
                             countSame++;
                         }
                     }
-                    return countSame!=1;
+                    
+                    return !(countSame==1 && varA.getDomain().size()==1  && varB.getDomain().size()==1);
                 }
             case 'u' -> { //A<B+i
                     if(varA.isAssigned() && varB.isAssigned()){
