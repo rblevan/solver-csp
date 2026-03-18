@@ -28,10 +28,10 @@ public class Labelling
 	private final Random random = new Random();
 
 	/**
-	 * Sets the variable selection strategy.
+	 * Sets the variable selection {@code strategy}.
 	 *
 	 * @param strategy 
-	 * @throws IllegalArgumentException if the strategy is unknown
+	 * @throws IllegalArgumentException if the {@code strategy} is unknown
 	 */
 	public void setVarStrategy(int strategy) 
 	{
@@ -47,7 +47,7 @@ public class Labelling
 	}
 
 	/**
-	 * Sets the value ordering strategy.
+	 * Sets the value ordering {@code strategy}.
 	 *
 	 * @param strategy 
 	 * @throws IllegalArgumentException if the strategy is unknown
@@ -67,7 +67,7 @@ public class Labelling
 	 * Selects the next variable to assign according to the configured strategy.
 	 *
 	 * @param csp CSP instance containing variables
-	 * @return selected unassigned variable, or null if none is available or if csp is null
+	 * @return selected unassigned {@link Variable}, or null if none is available or if csp is null
 	 */
 	public Variable selectVariable(CSP csp) 
 	{
@@ -104,12 +104,12 @@ public class Labelling
 	}
 
 	/**
-	 * Selects the next value to try for a variable.
+	 * Selects the next value to try for a {@link Variable}.
 	 *
 	 * This method returns the first value of orderValues(Variable)}.
 	 *
 	 * @param variable to label
-	 * @return next value to try
+	 * @return {@code int} next value to try
 	 * @throws IllegalStateException if no value is currently available
 	 */
   	public int selectValue(Variable variable)
@@ -124,9 +124,9 @@ public class Labelling
 
 	/**
 	 * Builds and orders the list of currently available values from a variable domain.
-	 * The list is ordered according to the configured value ordering strategy.
+	 * The list is ordered according to the configured {@code value} ordering strategy.
 	 * @param variable whose domain values are requested
-	 * @return list of available values; empty list if variable or its domain is null
+	 * @return {@code List<Integer>} of available values; empty list if variable or its domain is {@code null}
 	 */
 	public List<Integer> orderValues(Variable variable)
 	{

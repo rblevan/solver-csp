@@ -5,7 +5,7 @@ import java.util.Arrays;
 /**
  * Represents the set of possible values for a {@link Variable}.
  * <p>
- * This class implements a domain using a boolean array to track the presence
+ * This class implements a {@link Domain} using a boolean array to track the presence
  * of values within a specific range [min, max]
  * </p>
  * @author Evan RIBOULEAU
@@ -17,7 +17,7 @@ public class Domain {
 	private boolean[] presence;
 
 	/**
-	 * Constructor for Domain class
+	 * Constructor for {@link Domain} class
 	 * @param min minimum value
 	 * @param max maximum value
 	 */
@@ -35,7 +35,7 @@ public class Domain {
     }
 
 	/**
-	 * Remove an integer to the domain
+	 * Remove an integer to the {@link Domain}
 	 * @param value integer to remove
 	 */
 	public void removeValue(int value) {
@@ -45,18 +45,8 @@ public class Domain {
 	}
 
 	/**
-<<<<<<< HEAD
-<<<<<<< HEAD
-	 *  Restore an integer to the domain
+	 * Restore an integer to the {@link Domain}
 	 * @param value integer to restore
-=======
-	 * @param value
-	 * This method restore an integer to the domain.
->>>>>>> 9424030 (Update : doc BackTrack, Domain and Variable)
-=======
-	 *  Restore an integer to the domain
-	 * @param value integer to restore
->>>>>>> ef8ff3b (Update : doc)
 	 * */
 	public void restoreValue(int value) {
 		if (value >= this.min && value <= this.max) {
@@ -65,9 +55,9 @@ public class Domain {
 	}
 
 	/**
-	 * This method watch if an integer is in the domain
+	 * This method watch if an integer is in the {@link Domain}
 	 * @param value integer tested
-	 * @return boolean
+	 * @return {@code boolean}
 	 */
 	public boolean contains(int value) {
         if (value < min || value > max) {
@@ -78,7 +68,7 @@ public class Domain {
 
 	/**
 	 * Return the size of the domain
-     * @return int size of the domain
+     * @return {@code int} size of the domain
 	 * */
 
 	public int size() {
@@ -92,8 +82,8 @@ public class Domain {
 	}
 
 	/**
-	 * Modifies the current domain to keep only the values present in both domains
-	 * @param d Second domain to compare
+	 * Modifies the current {@link Domain} to keep only the values present in both domains
+	 * @param d Second {@link Domain} to compare
 	 * */
 	public void intersection(Domain d) {
 		for (int i = 0; i < this.presence.length; i++) {
@@ -107,6 +97,11 @@ public class Domain {
 		}
 	}
 
+    /**
+     * This method copy the current {@link Domain}
+     * @return {@link Domain} copied
+     * @author Chloé LEMAIRE
+     */
     protected Domain copy() {
         Domain d =new Domain(min, max);
 		for(int i=0;i<min-max+1;i++){

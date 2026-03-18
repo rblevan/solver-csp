@@ -3,8 +3,8 @@ package up.csp;
 import org.junit.Test;
 
 /**
+ * Test the {@link Domain} class
  * @author Evan Ribouleau
- * This class is used to test the Domain class.
  * */
 
 public class TestDomain {
