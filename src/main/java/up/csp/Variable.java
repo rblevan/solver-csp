@@ -78,7 +78,7 @@ public class Variable {
      * @return the {@code value} of the {@link Variable}
      */
     public Integer getValue() {
-        return this.value;
+        return this.value.intValue();
     }
 
    /**

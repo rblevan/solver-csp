@@ -49,7 +49,7 @@ public class TestConstraint{
         set = Constraint.equal(b,5);
         set.set();
 
-        assertFalse((a.toString()+"\n"+b.toString()),equals.check());
+        assertFalse((a.toString()+"\n"+b.toString()+"\n"+equals.check()),equals.check());
         assertTrue((a.toString()+"\n"+b.toString()),different.check());
         assertTrue((a.toString()+"\n"+b.toString()),under.check());
 
