@@ -12,7 +12,8 @@ import up.csp.constraint.Constraint;
  * It implements the Backtracking search algorithm combined with Forward-Checking
  * propagation to find valid assignments.
  * </p>
- * @authors Vanyla MAIKOOUVA + Chloé LEMAIRE
+ * @authors Vanyla MAIKOOUVA
+ * @authors Chloé LEMAIRE
  */
 public class CSP {
 
