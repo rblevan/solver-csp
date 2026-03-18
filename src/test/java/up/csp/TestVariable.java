@@ -124,4 +124,49 @@ public class TestVariable {
 
         assertEquals("Value should be the assigned value",actualValue.intValue(),15);
     }
+
+    // =========================================================================
+    // NEW TESTS (QA) - Black & White Box
+    // =========================================================================
+
+    /**
+     * White Box Test: Verify the protected method {@link Variable#setDomain(Domain)}}.
+     * This is crucial because it's used during the backtracking phase in the {@link CSP} class.
+     * @author Evan RIBOULEAU
+     */
+    @Test
+    public void testSetDomainUpdatesDomainReference() {
+        Domain newDomain = new Domain(30, 40); // Assuming Domain constructor takes min, max
+        var.setDomain(newDomain);
+
+        assertSame("setDomain should replace the existing domain with the new one", newDomain, var.getDomain());
+    }
+
+    /**
+     * Black Box Test: Verify that {@link Variable#toString()} returns a well-formatted string
+     * containing both the name and the current value.
+     * @author Evan RIBOULEAU
+     */
+    @Test
+    public void testToStringFormatWhenAssigned() {
+        var.assign(12);
+        String output = var.toString();
+
+        assertTrue("toString should contain the variable's name", output.contains("Myname"));
+        assertTrue("toString should contain the assigned value", output.contains("12"));
+        assertTrue("toString should mention the domain", output.contains("domain"));
+    }
+
+    /**
+     * Black Box Test: Verify that {@link Variable#toString()} handles null values correctly
+     * without throwing a {@link NullPointerException}.
+     * @author Evan RIBOULEAU
+     */
+    @Test
+    public void testToStringFormatWhenUnassigned() {
+        String output = var.toString();
+
+        assertTrue("toString should contain the variable's name even if unassigned", output.contains("Myname"));
+        assertTrue("toString should print 'null' or handle the lack of value gracefully", output.contains("null"));
+    }
 }
