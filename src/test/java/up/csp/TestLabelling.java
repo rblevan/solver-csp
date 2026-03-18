@@ -1,13 +1,19 @@
 package up.csp;
 
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertSame;
+
 import org.junit.Before;
 import org.junit.Test;
 
 import java.util.List;
-
 import static org.junit.Assert.*;
 
 
+/**
+ * Test the {@link Labelling} class
+ * @author Chloé LEMAIRE
+ */
 public class TestLabelling {
 
     private Labelling labelling;

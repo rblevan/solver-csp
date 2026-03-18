@@ -9,6 +9,10 @@ import static org.junit.Assert.assertTrue;
 import org.junit.Before;
 import org.junit.Test;
 
+/**
+ * Test the {@link Variable} class
+ * @author Nicolas ITEY
+ */
 public class TestVariable {
 
     private Domain domain; //Domain of the Variable
@@ -22,7 +26,7 @@ public class TestVariable {
     }
 
     /**
-     * @author Nicolas ITEY Return false for the function isAssigned because the
+     * Return {@code false}f for the function {@code isAssigned} because the
      * function has never been assigned
      */
     @Test
@@ -32,8 +36,8 @@ public class TestVariable {
     }
 
     /**
-     * @author Nicolas ITEY Verify that the function assign assigned a value to
-     * the Variable
+     * Verify that the function {@code assign()} assigned a value to
+     * the {@link Variable}
      */
     @Test
     public void shouldBeAssignedAfterAssignCall() {
@@ -50,8 +54,8 @@ public class TestVariable {
     }
 
     /**
-     * @author Nicolas ITEY Verify assign() Test if the value after being
-     * assigned is unassigned if it truly dissapear and if the value is now null
+     * Verify {@code assign()}. Test if the value after being
+     * assigned is unassigned if it truly dissapear and if the value is now {@code null}
      */
     @Test
     public void shouldUnassignTheValue() {
@@ -63,7 +67,7 @@ public class TestVariable {
     }
 
     /**
-     * @author Nicolas ITEY Verify unassign() Verifiy if unassign make something
+     * Verify {@code unassign()}. Verifiy if unassign make something
      * bug when no value has been assigned before
      */
     @Test
@@ -76,7 +80,7 @@ public class TestVariable {
     }
 
     /**
-     * @author Nicolas ITEY Verify getname() Verify if the name in the variable
+     * Verify {@code getName()}. Verify if the name in the variable
      * is saved as the same as the String "My name" by comparing them
      */
     @Test
@@ -88,8 +92,8 @@ public class TestVariable {
     }
 
     /**
-     * @author Nicolas ITEY Verify the methode GetDomain Verify if the Domain
-     * (10,20) is saved in the Variable
+     * Verify the methode {@code getDomain()} Verify if the Domain
+     * (10,20) is saved in the {@link Variable}
      */
     @Test
     public void shouldReturnCorrectDomain() {
@@ -97,8 +101,8 @@ public class TestVariable {
     }
 
     /**
-     * @author Nicolas ITEY Verify the method getValue() Verify that if there is
-     * no value assigned,it must be null
+     *Verify the method {@code getValue()} Verify that if there is
+     * no value assigned, it must be {@code null}
      */
     @Test
     public void shouldReturnNullWhenNotAssigned() {
@@ -108,8 +112,8 @@ public class TestVariable {
     }
 
     /**
-     * @author Nicolas ITEY Verify the method getValue() We assign the value 15
-     * before comparing if the Variable now has the value 15 in it with an
+     * Verify the method {@code getValue()} We assign the value 15
+     * before comparing if the {@link Variable} now has the value 15 in it with an
      * assert equal
      */
     @Test

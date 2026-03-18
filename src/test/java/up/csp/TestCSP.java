@@ -2,9 +2,14 @@ package up.csp;
 
 import org.junit.Test;
 import up.csp.constraint.Constraint;
-
 import java.util.ArrayList;
 import static org.junit.Assert.*;
+
+/**
+ * Test the {@link CSP} class
+ * @author Chloé LEMAIRE
+ */
+
 
 public class TestCSP {
 
@@ -13,7 +18,7 @@ public class TestCSP {
         CSP csp = new CSP();
         Variable x = new Variable("x", new Domain(1, 2));
         csp.addVariable(x);
-        assertFalse("CSP should not be complete before solving", csp.isComplete());
+        assertFalse(csp.isComplete());
     }
 
     @Test
@@ -22,9 +27,9 @@ public class TestCSP {
         Variable x = new Variable("x", new Domain(1, 3));
         csp.addVariable(x);
         csp.addConstraint(Constraint.equal(x, 2));
-        assertTrue("Solver failed to find a solution for simple unary constraint", csp.solve());
-        assertTrue("CSP should be complete after solving", csp.isComplete());
-        assertTrue("CSP should be satisfied after solving", csp.isSatisfied());
+        assertTrue(csp.solve());
+        assertTrue(csp.isComplete());
+        assertTrue(csp.isSatisfied());
     }
 
     @Test
@@ -61,7 +66,7 @@ public class TestCSP {
     /**
      * Tests a scenario that has no possible solution.
      * The solver should return false without crashing.
-     * 
+     *
      * @author Evan Ribouleau
      */
     @Test

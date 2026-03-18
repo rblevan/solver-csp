@@ -4,8 +4,8 @@ import org.junit.Test;
 import org.junit.Assert;
 
 /**
+ * Test the {@link Domain} class
  * @author Evan Ribouleau
- * This class is used to test the Domain class.
  * */
 
 public class TestDomain {
