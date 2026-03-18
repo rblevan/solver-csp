@@ -80,7 +80,6 @@ public class Variable {
     public Integer getValue() {
 
         return this.value;
-
     }
 
    /**
