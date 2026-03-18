@@ -6,7 +6,10 @@ import static org.junit.Assert.assertSame;
 import org.junit.Before;
 import org.junit.Test;
 
-
+/**
+ * Test the {@link Labelling} class
+ * @author Chloé LEMAIRE
+ */
 public class TestLabelling {
 
     private Labelling labelling;
