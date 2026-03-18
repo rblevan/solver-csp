@@ -8,6 +8,8 @@
 
 > ⚠️ **Note :** Ce projet est actuellement **en cours de développement**. Certaines fonctionnalités peuvent être incomplètes, et l'API interne est susceptible d'évoluer.
 
+Ce projet a été réalisé dans le cadre de l'UE "Génie Logiciel" à l'UFR SFA de l'Université de Poitiers. En groupe de 5 avec des rôles attribués.
+
 **Satisfy** est un solveur léger de problèmes de satisfaction de contraintes (CSP) développé en Java. Il permet de modéliser des problèmes combinatoires via des variables, des domaines et des contraintes, puis de les résoudre à l'aide d'un algorithme de backtracking intégrant du Forward Checking.
 
 ## 🚀 Fonctionnalités actuelles
