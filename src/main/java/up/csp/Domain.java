@@ -99,6 +99,12 @@ public class Domain {
 		}
 	}
 
+	/**
+	 *
+	 * This method copy the current domain.
+	 * @return Domain
+	 * @author Chloé Lemaire
+	 * */
     protected Domain copy() {
         Domain d =new Domain(min, max);
 		for(int i=0;i<min-max+1;i++){
@@ -109,8 +115,6 @@ public class Domain {
 		return d;
     }
 
-		
-
 	public int getMin() {
 		return this.min;
 	}
@@ -119,6 +123,11 @@ public class Domain {
 		return this.max;
 	}
 
+	/**
+	 * This method rewrite toString method for Domain.
+	 * @return String
+	 * @author Chloé Lemaire
+	 * */
 	@Override
 	public String toString() {
 		String res = "";
