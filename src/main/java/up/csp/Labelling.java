@@ -144,9 +144,18 @@ public class Labelling
 		return availableValues;
 	}
 
+	/**
+	 * Gets the current value ordering strategy.
+	 * @return {@code int} value strategy constant
+	 */
+
 	public int getValStrategy() {
 		return valStrategy;
 	}
+	/**
+	 * Gets the current variable selection strategy.
+	 * @return {@code int} variable strategy constant
+	 */
 
     public int getVarStrategy() {
         return varStrategy;

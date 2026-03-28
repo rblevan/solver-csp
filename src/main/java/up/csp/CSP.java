@@ -153,6 +153,7 @@ public class CSP {
 					if(!variable.getDomain().contains(value)){
 						continue;
 					}
+					BacktrackStep step = new BacktrackStep(variable, value, "Tentative assignment in solve");
 					variable.assign(value);
 					forwardCheck();
 					if (solve()) {
@@ -163,13 +164,14 @@ public class CSP {
 							Domain newDomain = temp.get(i);
 							v.setDomain(newDomain);
 						}
+						step.undo();
 						variable.getDomain().removeValue(value);
-						variable.unassign();
 					}
 				}
 				return false;
 			}
 		}
 	}
+	
 
 }
