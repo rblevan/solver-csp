@@ -143,4 +143,12 @@ public class Labelling
 		}
 		return availableValues;
 	}
+
+	public int getValStrategy() {
+		return valStrategy;
+	}
+
+    public int getVarStrategy() {
+        return varStrategy;
+    }
 }
