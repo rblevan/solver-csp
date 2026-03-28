@@ -166,6 +166,7 @@ public class CSP {
 			} else {
 				List<Integer> values = labelling.orderValues(variable);
 				for (int value : values) {
+					BacktrackStep step = new BacktrackStep(variable, value, "solve_value");
 					ArrayList<Domain> temp = new ArrayList<>();
 					for(Variable v : variables){
 						temp.add(v.getDomain().copy());
@@ -175,16 +176,26 @@ public class CSP {
 					}
 					variable.assign(value);
 					forwardCheck();
+					for (int i = 0; i < variables.size(); i++) {
+						Variable checkedVar = variables.get(i);
+						if (checkedVar == variable) {
+							continue;
+						}
+						Domain before = temp.get(i);
+						if (before.contains(value) && !checkedVar.getDomain().contains(value)) {
+							step.addImpactedVariable(checkedVar);
+						}
+					}
 					if (solve()) {
 						return true;
 					} else {
+						step.undo();
 						for(int i=0;i<temp.size();i++){
 							Variable v = variables.get(i);
 							Domain newDomain = temp.get(i);
 							v.setDomain(newDomain);
 						}
 						variable.getDomain().removeValue(value);
-						variable.unassign();
 					}
 				}
 				return false;
