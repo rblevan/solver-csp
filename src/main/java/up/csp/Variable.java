@@ -11,46 +11,44 @@ package up.csp;
  */
 public class Variable {
 
-    private final String name;
+    private String name;
     private Domain domain;
     private Integer value;
 
     /**
      * Constructor for the Variable class
-     * @param name unique name for the Variable
-     * @param domain the domain must be enumerable,so it must be a sequence
-     * @param value must be null if unassigned. this is the assigned value you are trying to find
+     * @param name unique name for the {@link Variable}
+     * @param domain the {@link Domain} must be enumerable, so it must be a sequence
      */
     public Variable(String name, Domain domain) {
         this.name = name;
         this.domain = domain;
-
     }
 
     /**
-     * Verify if the value has been assigned or not, return true if it has and false if it hasn't
-     * @return boolean
+     * Verify if the {@code value} has been assigned or not, return true if it has and false if it hasn't
+     * @return {@code true} if the value has been assigned, {@code false} otherwise
      */
     public boolean isAssigned() {
         return value != null;
     }
 
     /**
-     * Assign the value searched to the Variable
-     * @param value the value of the Variable 
+     * Assign the {@code value} searched to the {@link Variable}
+     * @param value the value of the {@link Variable}
      * @throws IllegalArgumentException if the parameter is invalid
      */
     public void assign(int value) {
         if (!domain.contains(value)) {
             throw new IllegalArgumentException(
-                    "Value " + value +" of variable "+ name+" not in domain "+domain
+                    "Value " + value + " not in domain"
             );
         }
         this.value = value;
     }
 
     /**
-     * Unassign the value of the Variable and turn it into null
+     * Unassign the {@code value} of the {@link Variable} and turn it into {@code null}
      */
     public void unassign() {
         if (isAssigned()) {
@@ -60,14 +58,15 @@ public class Variable {
 
     /**
      * Get the name
+     * @return {@code String} the name of the {@link Variable}
      */
     public String getName() {
-
         return this.name;
     }
 
     /**
-     * Get the domain
+     * Get the {@link Domain}
+     * @return the {@link Domain} of the {@link Variable}
      */
     public Domain getDomain() {
 
@@ -76,16 +75,15 @@ public class Variable {
 
     /**
      * Get the Value
+     * @return the {@code value} of the {@link Variable}
      */
     public Integer getValue() {
-
-        return this.value;
-
+        return this.value.intValue();
     }
 
    /**
-    * replaces the domain with a new one
-    * @param d domain to replace
+    * replaces the {@link Domain} with a new one
+    * @param d {@link Domain} to replace
     */
     protected void setDomain(Domain d){
         domain=d;

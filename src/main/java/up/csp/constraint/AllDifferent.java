@@ -5,16 +5,40 @@ import java.util.ArrayList;
 import java.util.Objects;
 
 import up.csp.Variable;
+
+/**
+ * Implementation of the <b>AllDifferent</b> constraint
+ * <p>
+ * This constraint ensures that all variables within a specified list hold distinct values.
+ * </p>
+ * * <p><b>Usage example:</b></p>
+ * <pre>
+ * List&lt;Variable&gt; vars = Arrays.asList(v1, v2, v3);
+ * AllDifferent constraint = new AllDifferent(vars);
+ * boolean isValid = constraint.check();
+ * </pre>
+ * @author Chloé Lemaire
+ * @see Variable
+ */
 public class AllDifferent extends Constraint {
     private final ArrayList<Variable> variables;
     
-    /**@author Chloé Lemaire
-    @param differentVariables list of variables that needs to be different
+    /**
+    * @param differentVariables list of variables that needs to be different
     */
     protected AllDifferent(ArrayList<Variable> differentVariables){
         variables=differentVariables;
     }
 
+    /**
+     * Checks whether the constraint is currently satisfied.
+     * <p>
+     * This implementation uses a cross-comparison (double loop) to ensure that
+     * no two variables share the same value.
+     * </p>
+     * @return {@code true} if all variables have distinct values (or if the list
+     * contains fewer than two variables); {@code false} otherwise.
+     */
     @Override
     public boolean check(){
         boolean isDifferent = true;

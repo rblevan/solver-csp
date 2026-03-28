@@ -8,18 +8,23 @@ import org.junit.Test;
 
 import up.csp.constraint.Constraint;
 
+/**
+ * Test all the constraints classes
+ * @author Chloé LEMAIRE
+ */
 public class TestConstraint{
 
     @Test
     public void testUnary(){
         Variable a = new Variable("a",new Domain(0,10));
-        Constraint equality = Constraint.equal(a,10);
-        assertFalse(equality.check());
-        a.assign(10);
-        assertTrue(equality.check());
+        Constraint equality = Constraint.equal(a,6);
+        assertFalse(("a domain "+a.getDomain()),equality.check());
+        equality.set();
+        assertTrue(("a domain "+a.getDomain()+" a value : "+a.getValue()),equality.check());
         Constraint different = Constraint.different(a,5);
+        different.set();
         assertTrue(different.check());
-        a.assign(5);
+        a.getDomain().restoreValue(5);
         assertFalse(different.check());
     }
 
@@ -31,39 +36,43 @@ public class TestConstraint{
         Constraint equals = Constraint.equal(a,b);
         Constraint different = Constraint.different(a,b, constant);
         Constraint under = Constraint.under(a,b,constant);
+        equals.set();
+        different.set();
+        under.set();
+        assertTrue((a.toString()+"\n"+b.toString()),equals.check());
+        assertTrue((a.toString()+"\n"+b.toString()),different.check());
+        assertTrue((a.toString()+"\n"+b.toString()),under.check());
 
-        assertFalse(equals.check());
-        assertFalse(different.check());
-        assertFalse(under.check());
 
-        a.assign(1);
-        b.assign(2);
+        Constraint set = Constraint.equal(a,1);
+        set.set();
+        set = Constraint.equal(b,5);
+        set.set();
 
-        assertFalse(equals.check());
-        assertTrue(different.check());
-        assertTrue(under.check());
+        assertFalse((a.toString()+"\n"+b.toString()+"\n"+equals.check()),equals.check());
+        assertTrue((a.toString()+"\n"+b.toString()),different.check());
+        assertTrue((a.toString()+"\n"+b.toString()),under.check());
 
-        a.assign(2);
-
-        assertTrue(equals.check());
-        assertFalse(different.check());
-        assertFalse(under.check());
+        a.getDomain().restoreValue(6);
+        set = Constraint.equal(a,6);
+        set.set();
+        assertFalse((a.toString()+"\n"+b.toString()),equals.check());
+        assertTrue((a.toString()+"\n"+b.toString()),different.check());
+        assertFalse((a.toString()+"\n"+b.toString()),under.check());
 
         constant = 3;
         different = Constraint.different(a,b, constant);
         under = Constraint.under(a,b,constant);
-        
-        assertTrue(equals.check());
-        assertTrue(different.check());
-        assertTrue(under.check());
+        assertFalse(("a domain "+a.getDomain()+"\n b domain"+b.getDomain()),equals.check());
+        assertTrue(("a domain "+a.getDomain()+"\n b domain"+b.getDomain()),different.check());
+        assertTrue(("a domain "+a.getDomain()+"\n b domain"+b.getDomain()),under.check());
 
         constant = -3;
         different = Constraint.different(a,b, constant);
         under = Constraint.under(a,b,constant);
-
-        assertTrue(equals.check());
-        assertTrue(different.check());
-        assertFalse(under.check());
+        assertFalse(("a domain "+a.getDomain()+"\n b domain"+b.getDomain()),equals.check());
+        assertTrue(("a domain "+a.getDomain()+"\n b domain"+b.getDomain()),different.check());
+        assertFalse(("a domain "+a.getDomain()+"\n b domain"+b.getDomain()),under.check());
     }   
 
     @Test
