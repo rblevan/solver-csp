@@ -2,13 +2,22 @@ package up.csp;
 
 import java.util.Arrays;
 
+/**
+ * Represents the set of possible values for a {@link Variable}.
+ * <p>
+ * This class implements a {@link Domain} using a boolean array to track the presence
+ * of values within a specific range [min, max]
+ * </p>
+ * @author Evan RIBOULEAU
+ */
 public class Domain {
 
 	private int min;
 	private int max;
 	private boolean[] presence;
+
 	/**
-	 * 
+	 * Constructor for {@link Domain} class
 	 * @param min minimum value
 	 * @param max maximum value
 	 */
@@ -20,14 +29,14 @@ public class Domain {
 			this.min = this.max;
 			this.max = temp;
 		}
-		this.presence = new boolean[this.max - this.min + 1];
+		int length = this.max - this.min + 1;
+		this.presence = new boolean[length];
         Arrays.fill(this.presence, true);
     }
 
 	/**
-	 * 
-	 * @param value
-	 * This method remove an integer to the domain.
+	 * Remove an integer to the {@link Domain}
+	 * @param value integer to remove
 	 */
 	public void removeValue(int value) {
 		if (value >= this.min && value <= this.max) {
@@ -36,9 +45,8 @@ public class Domain {
 	}
 
 	/**
-	 *
-	 * @param value
-	 * This method restore an integer to the domain.
+	 * Restore an integer to the {@link Domain}
+	 * @param value integer to restore
 	 * */
 	public void restoreValue(int value) {
 		if (value >= this.min && value <= this.max) {
@@ -47,9 +55,9 @@ public class Domain {
 	}
 
 	/**
-	 * 
-	 * @param value
-	 * This method watch if an integer is in the domain.
+	 * This method watch if an integer is in the {@link Domain}
+	 * @param value integer tested
+	 * @return {@code boolean}
 	 */
 	public boolean contains(int value) {
         if (value < min || value > max) {
@@ -59,8 +67,8 @@ public class Domain {
 	}
 
 	/**
-	 *
-	 * This method return the size of the domain.
+	 * Return the size of the domain
+     * @return {@code int} size of the domain
 	 * */
 
 	public int size() {
@@ -74,9 +82,8 @@ public class Domain {
 	}
 
 	/**
-	 *
-	 * @param d Second domain
-	 * This method modifies the current domain to keep only the values present in both domains.
+	 * Modifies the current {@link Domain} to keep only the values present in both domains
+	 * @param d Second {@link Domain} to compare
 	 * */
 	public void intersection(Domain d) {
 		for (int i = 0; i < this.presence.length; i++) {
@@ -84,10 +91,28 @@ public class Domain {
 				int val = this.min + i;
 				if (!d.contains(val)) {
 					this.presence[i] = false;
+					d.removeValue(i);
 				}
 			}
 		}
 	}
+
+    /**
+     * This method copy the current {@link Domain}
+     * @return {@link Domain} copied
+     * @author Chloé LEMAIRE
+     */
+    protected Domain copy() {
+        Domain d =new Domain(min, max);
+		for(int i=0;i<min-max+1;i++){
+			if(!presence[i]){
+				d.removeValue(i+min);
+			}
+		}
+		return d;
+    }
+
+
 
 	public int getMin() {
 		return this.min;
@@ -95,6 +120,15 @@ public class Domain {
 
 	public int getMax() {
 		return this.max;
+	}
+
+	@Override
+	public String toString() {
+		String res = "";
+		for(int i=0;i<max-min+1;i++){
+			res += "( "+(i+min)+" : "+Boolean.toString(presence[i])+" )";
+		}
+		return res;
 	}
 
 }

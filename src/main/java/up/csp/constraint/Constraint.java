@@ -3,10 +3,16 @@ package up.csp.constraint;
 import java.util.ArrayList;
 
 import up.csp.Variable;
+
+/**
+ * Implementation of Constraint
+ * @author Chloé Lemaire
+ */
 public abstract class Constraint {
 
 
 	public abstract boolean check();
+	public abstract void set();
 
 	/** @author Chloé lemaire
 	 * @param var variable which we want to be equal
@@ -59,7 +65,7 @@ public abstract class Constraint {
 	 * @param v list of variables that needs to be different
 	 * @return returns a constraint where all the variables are different
 	 */
-	public static AllDifferent allDifferent(ArrayList<Variable> v){
+	public static Constraint allDifferent(ArrayList<Variable> v){
 		return new AllDifferent(v);
 	}
 }

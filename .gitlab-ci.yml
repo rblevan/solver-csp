@@ -13,5 +13,5 @@ compilation :
 tests : 
   stage : test
   script :
-    -echo 'test'
-    -mvn test
+    - echo 'test'
+    - mvn test
