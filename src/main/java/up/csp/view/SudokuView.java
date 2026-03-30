@@ -112,7 +112,7 @@ public class SudokuView implements View {
         btnPrevStep = new Button("Étape précédente");
         btnReset = new Button("Reset");
 
-        btnPanel.getChildren().addAll(btnStart, btnNextStep, btnPrevStep, btnReset);
+        btnPanel.getChildren().addAll(btnStart, btnPrevStep, btnNextStep, btnReset);
         resolutionScreen.setBottom(btnPanel);
     }
 
