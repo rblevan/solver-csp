@@ -104,7 +104,7 @@ public class Domain {
      */
     protected Domain copy() {
         Domain d =new Domain(min, max);
-		for(int i=0;i<min-max+1;i++){
+        for(int i=0; i < max - min + 1; i++) {
 			if(!presence[i]){
 				d.removeValue(i+min);
 			}

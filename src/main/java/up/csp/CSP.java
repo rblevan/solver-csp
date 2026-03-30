@@ -20,6 +20,7 @@ public class CSP {
 	private final ArrayList<Variable> variables;
 	private final ArrayList<Constraint> constraints;
 	private final Labelling labelling;
+    private java.util.function.Consumer<String> stepListener;
 
 	public CSP() 
 	{
@@ -27,6 +28,10 @@ public class CSP {
 		constraints = new ArrayList<>();
 		labelling = new Labelling();
 	}
+
+    public void setStepListener(java.util.function.Consumer<String> listener) {
+        this.stepListener = listener;
+    }
 
 	/**
 	 * Adds a {@link Variable} to this CSP.
@@ -156,9 +161,13 @@ public class CSP {
 					BacktrackStep step = new BacktrackStep(variable, value, "Tentative assignment in solve");
 					variable.assign(value);
 					forwardCheck();
+
+                    if(stepListener != null) stepListener.accept("Assignation : " + variable.getName() + " = " + value);
+
 					if (solve()) {
 						return true;
 					} else {
+                        if(stepListener != null) stepListener.accept("Backtrack sur : " + variable.getName() + " (retrait du " + value + ")");
 						for(int i=0;i<temp.size();i++){
 							Variable v = variables.get(i);
 							Domain newDomain = temp.get(i);
